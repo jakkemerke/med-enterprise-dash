@@ -1,0 +1,13 @@
+# Forget these =P
+
+$RECYCLE.BIN/
+*.egg-info
+*.out
+*.pyc
+*~
+.DS_Store
+.coverage
+Desktop.ini
+Thumbs.db
+__pycache__
+sandbox*/*

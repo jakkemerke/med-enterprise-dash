@@ -1,0 +1,13 @@
+* About
+
+A prototype web application for managing patient data.
+
+* License
+
+Copyright 2020 vaeringjar.
+
+Distributed under the AGPLv3+.
+
+* Developer users
+
+/See the Makefile./
