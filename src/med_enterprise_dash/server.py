@@ -8,7 +8,7 @@ from pyramid.response import Response
 
 
 def home(request):
-    return Response('<body><a href="/">Home</a></body>')
+    return {"name": "Home"}
 
 
 def login(request):
@@ -25,8 +25,9 @@ def apps(request):
 
 if __name__ == "__main__":
     with Configurator() as config:
+        config.include("pyramid_jinja2")
         config.add_route("home", "/")
-        config.add_view(home, route_name="home")
+        config.add_view(home, route_name="home", renderer="./templates/home.jinja2")
         config.add_route("logout", "/logout")
         config.add_view(logout, route_name="logout")
         config.add_route("login", "/login")
