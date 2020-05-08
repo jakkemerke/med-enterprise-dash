@@ -4,15 +4,14 @@
         <title>MED: {{ name }}</title>
     </head>
     <body>
-        <h1>Med Enterprise Dash</h1>
-        <p>Please choose an option:</p>
+        <h1>{{ name }}: {{username}}</h1>
         <ul>
-	    {% if username %}
+            {% if username %}
             <li><a href="/profile">Profile</a></li>
             <li><a href="/logout">Logout</a></li>
-	    {% else %}
+            {% else %}
             <li><a href="/login">Login</a></li>
-	    {% endif %}
+            {% endif %}
         </ul>
     </body>
 </html>
