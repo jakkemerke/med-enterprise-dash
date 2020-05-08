@@ -1,13 +1,18 @@
 from pyramid.response import Response
 import pyramid.httpexceptions as exc
-from cas import CASClient
-from utils import get_profile_route_name, get_home_route_name, get_login_route_name
 
-cas_client = CASClient(
-    version=3,
-    service_url=f"http://localhost:6543/login?next={get_profile_route_name()}",
-    server_url="https://django-cas-ng-demo-server.herokuapp.com/cas/",
+from auth import get_auth_client
+from utils import (
+    get_profile_route_name,
+    get_home_route_name,
+    get_login_route_name,
+    get_apps_route_name,
 )
+
+# import logging
+# log = logging.getLogger(__name__)
+
+cas_client = get_auth_client()
 
 
 def get_username(request):
@@ -17,15 +22,19 @@ def get_username(request):
         return ""
 
 
+def has_username(username):
+    return username and username != ""
+
+
+def is_logged_in(request):
+    return has_username(get_username(request))
+
+
 def get_home_view(request):
     return {
         "name": get_home_route_name(),
         "username": get_username(request),
     }
-
-
-def is_logged_in(request):
-    return get_username(request) != ""
 
 
 def login(request):
@@ -45,25 +54,21 @@ def login(request):
     if not ticket:
         raise exc.HTTPFound(cas_client.get_login_url())
 
-    # app.logger.debug('ticket: %s', ticket)
-    # app.logger.debug('next: %s', next)
+    # log.debug('ticket: %s', ticket)
+    # log.debug('next: %s', next)
 
-    try:
-        user, attributes, pgtiou = cas_client.verify_ticket(ticket)
+    user, attributes, pgtiou = cas_client.verify_ticket(ticket)
 
-        # app.logger.debug(
-        #     'CAS verify ticket response: user: %s,
-        #     attributes: %s, pgtiou: %s', user, attributes, pgtiou)
+    # log.debug(
+    #     'CAS verify ticket response: user: %s,
+    #     attributes: %s, pgtiou: %s', user, attributes, pgtiou)
 
-        if not user:
-            return Response('Failed to verify ticket. <a href="/login">Login</a>')
-        else:
-            request.session["username"] = user
-            raise exc.HTTPFound(request.route_url(next))
-
-    except Exception as exception:
-        # app.logger.error(exception)
-        return Response('Error trying to verify ticket. <a href="/login">Login</a>')
+    if not user:
+        return Response('Failed to verify ticket. <a href="/login">Login</a>')
+    else:
+        request.session["username"] = user
+        next_url = request.route_url(next)
+        raise exc.HTTPFound(next_url)
 
 
 def logout(request):
@@ -81,7 +86,14 @@ def logout_callback(request):
 
 
 def apps(request):
-    return {"name": "Apps"}
+    session = request.session
+    if "username" in session:
+        return {
+            "name": get_apps_route_name(),
+            "username": get_username(request),
+        }
+    else:
+        raise exc.HTTPFound(request.route_url(get_login_route_name()))
 
 
 def profile(request):

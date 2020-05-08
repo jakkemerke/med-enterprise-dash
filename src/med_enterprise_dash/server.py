@@ -1,7 +1,9 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.session import SignedCookieSessionFactory
+
 from routes import *
+from utils import get_port, get_hostname
 
 # import os, sys
 # if "med_enterprise_dash" not in sys.path:
@@ -35,9 +37,11 @@ if __name__ == "__main__":
             renderer="./templates/profile.jinja2",
         )
 
-        config.add_route("apps", "/apps")
-        config.add_view(apps, route_name="apps", renderer="./templates/apps.jinja2")
+        config.add_route(get_apps_route_name(), "/apps")
+        config.add_view(
+            apps, route_name=get_apps_route_name(), renderer="./templates/apps.jinja2"
+        )
 
         app = config.make_wsgi_app()
-    server = make_server("localhost", 6543, app)  # localhost:6543
+    server = make_server(get_hostname(), get_port(), app)  # http://localhost:6543/
     server.serve_forever()
