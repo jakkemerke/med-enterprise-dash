@@ -2,6 +2,15 @@
 
 A prototype web application for managing patient data.
 
+* CAS Server
+
+Using the example server here:
+
+https://djangocas.dev/blog/python-cas-flask-example/
+
+username: admin
+password: django-cas-ng
+
 * License
 
 Copyright 2020 vaeringjar.
