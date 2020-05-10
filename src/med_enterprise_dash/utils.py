@@ -23,4 +23,4 @@ def get_hostname():
 
 
 def get_host_url():
-    return f"{get_hostname}:{get_port}"
+    return f"{get_hostname()}:{get_port()}"

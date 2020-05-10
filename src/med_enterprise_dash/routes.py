@@ -82,7 +82,9 @@ def logout(request):
 
 def logout_callback(request):
     request.session.invalidate()
-    return Response('Logged out. <a href="/login">Login</a>')
+    return {
+        "name": "logout_callback",
+    }
 
 
 def apps(request):

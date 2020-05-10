@@ -14,6 +14,7 @@ if __name__ == "__main__":
     with Configurator() as config:
         config.include("pyramid_jinja2")
         config.set_session_factory(my_session_factory)
+        config.add_static_view(path="med_enterprise_dash:static", name="static")
 
         config.add_route(get_home_route_name(), "/")
         config.add_view(
@@ -28,7 +29,11 @@ if __name__ == "__main__":
         config.add_route("logout", "/logout")
         config.add_view(logout, route_name="logout")
         config.add_route("logout_callback", "/logout_callback")
-        config.add_view(logout_callback, route_name="logout_callback")
+        config.add_view(
+            logout_callback,
+            route_name="logout_callback",
+            renderer="./templates/logout_callback.jinja2",
+        )
 
         config.add_route(get_profile_route_name(), "/profile")
         config.add_view(

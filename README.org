@@ -17,6 +17,10 @@ Copyright 2020 vaeringjar.
 
 Distributed under the AGPLv3+.
 
+* Acknowledgments
+
+- favicons :: https://favicon.io/emoji-favicons/medical-symbol/
+
 * Developer users
 
 /See the Makefile./

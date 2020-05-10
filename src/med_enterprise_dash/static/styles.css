@@ -1,0 +1,86 @@
+/*
+                              .                       .
+,-,-. ," . , , ,-.    ,-. . . |-. ,-. ,-. ,-. . . ,-. | ,
+| | | |- |/|/  `-. -- |   | | | | |-' |   | | | | | | |<
+' ' ' |  ' '   `-'    `-' `-| ^-' `-' '   |-' `-^ ' ' ' `
+      '                    /|             |
+                          `-'             '
+mfws-cyberpunk
+
+- Mobile first screen sizes.
+- Eighty column rule.
+- Upper-case for 3-char hex.
+- Lower-case for 6-char hex.
+- Space after semi-colon if preceding a letter.
+- No space after a colon.
+- Only define classes when necessary.
+
+*/
+
+body {
+    margin:1rem auto;
+    padding:0 3.2%;
+    width:93.6%;
+    max-width:1024px;
+    font-family:sans-serif;
+    line-height:1.4;
+    color:#efefef;
+    background:#372963;
+}
+
+a {color:#aaaaff;}
+a:visited {color:#ca8aff;}
+a:hover {color:#FCF;}
+a:active {color:#FFF;}
+:focus {border:1px solid #ff00ff;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:monospace;
+    font-size:x-large;
+}
+h1, .title {color:#ff1100;}
+h2 {color:#ff9c00;}
+h3 {color:#ff8c10;}
+h4 {color:#ff7c20;}
+h5 {color:#ff6c30;}
+h6 {color:#ff5c40;}
+
+/* NOTE: Currently, the site has no inputs. */
+/* input[type="submit"] { */
+/*     padding:0.618em;  */
+/*     border:none;  */
+/*     border-radius:0.618em; */
+/* } */
+img {max-width:100%;}
+
+pre {white-space: pre;}
+pre.src {
+    background-color:#000;
+    color:#0F0;
+    font-family:monospace;
+}
+blockquote {
+    background:#328;
+    color:#CCC;
+    font-family:serif;
+}
+
+
+table {
+    background-color:#222;
+    color:#CCC;
+}
+tr:nth-child(even) {
+    background-color:#CCC;
+    color:#222;
+}
+
+@media only screen and (min-width: 640px) {
+    body {
+        min-width:600px;
+        width:80%;
+        padding:0 10px;
+    }
+}
+
+.hash {font-family: monospace;}

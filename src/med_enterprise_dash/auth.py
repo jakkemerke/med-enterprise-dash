@@ -1,6 +1,7 @@
 from cas import CASClient
 from utils import get_profile_route_name, get_host_url
 
+
 def get_auth_client():
     return CASClient(
         version=3,
