@@ -17,16 +17,105 @@ mfws-cyberpunk
 
 */
 
+* {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: #EEE;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    margin:1rem auto;
-    padding:0 3.2%;
-    width:93.6%;
-    max-width:1024px;
+    margin:0 auto;
     font-family:sans-serif;
     line-height:1.4;
-    color:#efefef;
-    background:#372963;
+    min-width:600px;
+    width:80%;
 }
+
+header.mfws *,
+header.mfws:before {
+    background-color: #000;
+}
+header.mfws,
+header.mfws:before {
+    height: 70px;
+}
+header.mfws:before {
+    left: 0;
+    position: absolute;
+    top: 0;
+    content: '';
+    display: block;
+    width: 100%;
+    z-index: -10;
+}
+header.mfws nav ul {
+    list-style-type: none;
+}
+header.mfws nav ul li {
+    display: inline;
+    padding: 0 20px 0 0;
+    height: 70px;
+}
+header.mfws nav ul:nth-child(odd) li {
+    float: left;
+}
+header.mfws nav ul:nth-child(even) li {
+    float: right;
+}
+header.mfws nav ul li a,
+header.mfws nav ul li a:active,
+header.mfws nav ul li a:visited {
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    height: 50px;
+    padding-top:20px;
+}
+header.mfws nav:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+section.mfws {
+    width: 100%;
+    min-height: calc(100% - 230px);
+}
+
+footer.mfws {
+    left: 0;
+    position: absolute;
+    width: 80%;
+    padding: 0 10%;
+}
+
+footer.mfws,
+footer.mfws *,
+footer.mfws:before {
+    background-color: #000;
+}
+footer.mfws nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+footer.mfws nav div.widget {
+    flex-grow: 1;
+}
+footer.mfws nav div.widget:last-child {
+    flex-grow: 8;
+    text-align: right;
+}
+
+/* TODO: Restore the media query and make mobile-first. */
+
+/* Non-layout styles follow: */
 
 a {color:#aaaaff;}
 a:visited {color:#ca8aff;}
@@ -73,14 +162,6 @@ table {
 tr:nth-child(even) {
     background-color:#CCC;
     color:#222;
-}
-
-@media only screen and (min-width: 640px) {
-    body {
-        min-width:600px;
-        width:80%;
-        padding:0 10px;
-    }
 }
 
 .hash {font-family: monospace;}

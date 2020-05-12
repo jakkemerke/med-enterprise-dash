@@ -1,0 +1,40 @@
+<footer title="Extended menu and semi-sitemap" class="mfws-site">
+
+    <a id="sitemap"></a>
+
+    <div class="widget">
+        <h1>Misc</h1>
+        <ul>
+	    <li><a href="#sitemap">Example1</a></li>
+	    <li><a href="#sitemap">Example2</a></li>
+	    <li><a href="#sitemap">Example3</a></li>
+        </ul>
+    </div>
+    
+    {% block apps %}
+    {% if apps  %}
+    <div class="widget">
+        <h1>Apps</h1>
+        <ul>
+            {% for app in apps %}
+                <li><a href="{{ app.route }}">{{ app.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+    {% block external_links %}
+    {% if external_links %}
+    <div class="widget">
+        <h1>External Links</h1>
+        <ul>
+            {% for link in external_links %}
+                <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+</footer>
