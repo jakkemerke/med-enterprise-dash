@@ -1,40 +1,42 @@
-<footer title="Extended menu and semi-sitemap" class="mfws-site">
-
+<footer class="mfws">
     <a id="sitemap"></a>
+    <nav class="sitemap">
 
-    <div class="widget">
-        <h1>Misc</h1>
-        <ul>
-	    <li><a href="#sitemap">Example1</a></li>
-	    <li><a href="#sitemap">Example2</a></li>
-	    <li><a href="#sitemap">Example3</a></li>
-        </ul>
-    </div>
-    
-    {% block apps %}
-    {% if apps  %}
-    <div class="widget">
-        <h1>Apps</h1>
-        <ul>
-            {% for app in apps %}
+	{% block apps %}
+	{% if apps  %}
+	<div class="widget">
+            <h1>Apps</h1>
+            <ul>
+		{% for app in apps %}
                 <li><a href="{{ app.route }}">{{ app.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-    {% endblock %}
+		{% endfor %}
+            </ul>
+	</div>
+	{% endif %}
+	{% endblock %}
 
-    {% block external_links %}
-    {% if external_links %}
-    <div class="widget">
-        <h1>External Links</h1>
-        <ul>
-            {% for link in external_links %}
+	{% block external_links %}
+	{% if external_links %}
+	<div class="widget">
+            <h1>External Links</h1>
+            <ul>
+		{% for link in external_links %}
                 <li><a href="{{ link.url }}">{{ link.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-    {% endblock %}
+		{% endfor %}
+            </ul>
+	</div>
+	{% endif %}
+	{% endblock %}
 
+        <div class="widget">
+	    <h1>Auth</h1>
+            <ul>
+		{% if username %}
+		<li><a href="/logout">Logout</a></li>
+		{% else %}
+		<li><a href="/login">Login</a></li>
+		{% endif %}
+            </ul>
+        </div>
+    </nav>
 </footer>

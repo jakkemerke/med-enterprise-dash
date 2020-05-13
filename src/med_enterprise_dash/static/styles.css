@@ -85,8 +85,9 @@ header.mfws nav:after {
 
 section.mfws {
     width: 100%;
-    min-height: calc(100% - 230px);
+    min-height: calc(100% - 160px);
 }
+
 
 footer.mfws {
     left: 0;
@@ -111,6 +112,7 @@ footer.mfws nav div.widget {
 footer.mfws nav div.widget:last-child {
     flex-grow: 8;
     text-align: right;
+    margin: 20px 0;
 }
 
 /* TODO: Restore the media query and make mobile-first. */
