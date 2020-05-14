@@ -1,5 +1,6 @@
 from cas import CASClient
-from utils import get_profile_route_name, get_host_url
+from utils import get_host_url
+from routes.utils import get_profile_route_name
 
 
 def get_auth_client():

@@ -2,39 +2,19 @@ from pyramid.response import Response
 import pyramid.httpexceptions as exc
 
 from auth import get_auth_client
-from utils import (
-    get_profile_route_name,
+from routes.home import get_home_view
+from routes.utils import (
+    get_apps_route_name,
     get_home_route_name,
     get_login_route_name,
-    get_apps_route_name,
+    get_logout_callback_route_name,
+    get_profile_route_name,
 )
 
 # import logging
 # log = logging.getLogger(__name__)
 
 cas_client = get_auth_client()
-
-
-def get_username(request):
-    if request.session:
-        return request.session["username"]
-    else:
-        return ""
-
-
-def has_username(username):
-    return username and username != ""
-
-
-def is_logged_in(request):
-    return has_username(get_username(request))
-
-
-def get_home_view(request):
-    return {
-        "name": get_home_route_name(),
-        "username": get_username(request),
-    }
 
 
 def login(request):
@@ -72,7 +52,7 @@ def login(request):
 
 
 def logout(request):
-    redirect_url = request.route_url("logout_callback")
+    redirect_url = request.route_url(get_logout_callback_route_name())
     cas_logout_url = cas_client.get_logout_url(redirect_url)
 
     # NOTE: Not all CAS instances have enabled callbacks.
@@ -83,7 +63,7 @@ def logout(request):
 def logout_callback(request):
     request.session.invalidate()
     return {
-        "name": "logout_callback",
+        "name": get_logout_callback_route_name(),
     }
 
 

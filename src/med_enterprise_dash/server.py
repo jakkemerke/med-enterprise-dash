@@ -2,7 +2,7 @@ from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.session import SignedCookieSessionFactory
 
-from routes import *
+from routes.routes import *
 from utils import get_port, get_hostname
 
 # import os, sys
@@ -28,10 +28,10 @@ if __name__ == "__main__":
 
         config.add_route("logout", "/logout")
         config.add_view(logout, route_name="logout")
-        config.add_route("logout_callback", "/logout_callback")
+        config.add_route(get_logout_callback_route_name(), "/logout_callback")
         config.add_view(
             logout_callback,
-            route_name="logout_callback",
+            route_name=get_logout_callback_route_name(),
             renderer="./templates/logout_callback.jinja2",
         )
 
