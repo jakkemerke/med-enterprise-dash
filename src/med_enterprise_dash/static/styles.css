@@ -12,7 +12,7 @@ mfws-cyberpunk
 - Upper-case for 3-char hex.
 - Lower-case for 6-char hex.
 - Space after semi-colon if preceding a letter.
-- No space after a colon.
+- TODO: Space or not after a colon?
 - Only define classes when necessary.
 
 */
@@ -29,11 +29,11 @@ html, body {
 }
 
 body {
-    margin:0 auto;
-    font-family:sans-serif;
-    line-height:1.4;
-    min-width:600px;
-    width:80%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    line-height: 1.4;
+    width: 93.6%;
+    max-width: 1024px;
 }
 
 header.mfws *,
@@ -95,7 +95,6 @@ footer.mfws {
     width: 80%;
     padding: 0 10%;
 }
-
 footer.mfws,
 footer.mfws *,
 footer.mfws:before {
@@ -103,19 +102,28 @@ footer.mfws:before {
 }
 footer.mfws nav {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
 footer.mfws nav div.widget {
     flex-grow: 1;
+    margin: 20px 0;
 }
 footer.mfws nav div.widget:last-child {
     flex-grow: 8;
     text-align: right;
-    margin: 20px 0;
 }
 
-/* TODO: Restore the media query and make mobile-first. */
+@media only screen and (min-width: 640px) {
+    body {
+        min-width: 600px;
+        width: 80%;
+    }
+    /*TODO: Fix the need for this flex bodge.*/
+    footer.mfws nav {
+        flex-direction: row;
+    }
+}
 
 /* Non-layout styles follow: */
 

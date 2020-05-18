@@ -9,6 +9,8 @@ from routes.utils import (
     get_login_route_name,
     get_logout_callback_route_name,
     get_profile_route_name,
+    get_username,
+    is_logged_in,
 )
 
 # import logging
@@ -84,6 +86,19 @@ def profile(request):
         return {
             "name": get_profile_route_name(),
             "username": get_username(request),
+            "apps": [
+                # {"route": "#", "name": "Appointments"},
+                # {"route": "#", "name": "AppointmentsLite"},
+                # {"route": "#", "name": "DataEntry"},
+                # {"route": "#", "name": "Events"},
+                # {"route": "#", "name": "PatientPortal"},
+                # {"route": "#", "name": "SearchPatients"},
+                # {"route": "#", "name": "SystemStatus"},
+            ],
+            "external_links": [
+                # {"url": "#", "name": "Link1"},
+                # {"url": "#", "name": "Link2"},
+            ],
         }
     else:
         raise exc.HTTPFound(request.route_url(get_login_route_name()))
