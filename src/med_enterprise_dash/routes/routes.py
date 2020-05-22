@@ -69,17 +69,6 @@ def logout_callback(request):
     }
 
 
-def apps(request):
-    session = request.session
-    if "username" in session:
-        return {
-            "name": get_apps_route_name(),
-            "username": get_username(request),
-        }
-    else:
-        raise exc.HTTPFound(request.route_url(get_login_route_name()))
-
-
 def profile(request):
     session = request.session
     if "username" in session:
@@ -99,6 +88,16 @@ def profile(request):
                 # {"url": "#", "name": "Link1"},
                 # {"url": "#", "name": "Link2"},
             ],
+        }
+    else:
+        raise exc.HTTPFound(request.route_url(get_login_route_name()))
+
+def apps(request):
+    session = request.session
+    if "username" in session:
+        return {
+            "name": get_apps_route_name(),
+            "username": get_username(request),
         }
     else:
         raise exc.HTTPFound(request.route_url(get_login_route_name()))

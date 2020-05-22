@@ -4,6 +4,7 @@ from pyramid.session import SignedCookieSessionFactory
 
 from routes.routes import *
 from utils import get_port, get_hostname
+from apps.routes import includeme
 
 # import os, sys
 # if "med_enterprise_dash" not in sys.path:
@@ -46,6 +47,8 @@ if __name__ == "__main__":
         config.add_view(
             apps, route_name=get_apps_route_name(), renderer="./templates/apps.jinja2"
         )
+
+        config.include('apps.routes.includeme', route_prefix='/apps')
 
         app = config.make_wsgi_app()
     server = make_server(get_hostname(), get_port(), app)  # http://localhost:6543/
