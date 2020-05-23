@@ -1,6 +1,7 @@
 def get_appointments_alternate_view(request):
     from pyramid.response import Response
-    return Response('OK')
+
+    return Response("OK")
 
 
 def get_appointments_alternate_route():
@@ -12,5 +13,10 @@ def get_appointments_alternate_route_name():
 
 
 def includeme(config):
-    config.add_route(get_appointments_alternate_route_name(), get_appointments_alternate_route())
-    config.add_view(get_appointments_alternate_view, route_name=get_appointments_alternate_route_name())
+    config.add_route(
+        get_appointments_alternate_route_name(), get_appointments_alternate_route()
+    )
+    config.add_view(
+        get_appointments_alternate_view,
+        route_name=get_appointments_alternate_route_name(),
+    )

@@ -2,8 +2,7 @@ from pyramid.response import Response
 import pyramid.httpexceptions as exc
 
 from auth import get_auth_client
-from routes.home import get_home_view
-from routes.utils import (
+from utils import (
     get_apps_route_name,
     get_home_route_name,
     get_login_route_name,
@@ -17,6 +16,13 @@ from routes.utils import (
 # log = logging.getLogger(__name__)
 
 cas_client = get_auth_client()
+
+
+def get_home_view(request):
+    return {
+        "name": get_home_route_name(),
+        "username": get_username(request),
+    }
 
 
 def login(request):
@@ -91,6 +97,7 @@ def profile(request):
         }
     else:
         raise exc.HTTPFound(request.route_url(get_login_route_name()))
+
 
 def apps(request):
     session = request.session
