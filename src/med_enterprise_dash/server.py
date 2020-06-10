@@ -9,8 +9,10 @@ from apps.routes import includeme
 # if "med_enterprise_dash" not in sys.path:
 #     sys.path.insert(0, os.path.abspath("."))
 
+
 def get_session_factory():
     return SignedCookieSessionFactory("todo_add_a_secret")
+
 
 def get_app():
     with Configurator() as config:
@@ -21,6 +23,8 @@ def get_app():
         config.include("apps.routes.includeme", route_prefix="/apps")
         return config.make_wsgi_app()
 
+
 if __name__ == "__main__":
-    server = make_server(get_hostname(), get_port(), get_app())  # http://localhost:6543/
+    # http://localhost:6543/
+    server = make_server(get_hostname(), get_port(), get_app())
     server.serve_forever()
