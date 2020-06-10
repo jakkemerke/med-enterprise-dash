@@ -15,7 +15,17 @@ from utils import (
 # import logging
 # log = logging.getLogger(__name__)
 
-cas_client = get_auth_client()
+# from pathlib import Path
+# {Path().home()}/.med_enterprise_dash/config.toml
+
+import toml
+
+
+def get_med_config():
+    return toml.load("config.toml")
+
+
+cas_client = get_auth_client(get_med_config())
 
 
 def get_home_view(request):

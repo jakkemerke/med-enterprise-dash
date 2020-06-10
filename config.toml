@@ -1,0 +1,4 @@
+# https://github.com/python-cas/python-cas
+[casclient]
+version = "3"
+server_url = "https://django-cas-ng-demo-server.herokuapp.com/cas/"
