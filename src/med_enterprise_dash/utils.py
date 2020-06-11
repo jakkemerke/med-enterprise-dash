@@ -25,8 +25,28 @@ def get_host_url(med_config):
     return f"{get_home_url_scheme(get_scheme(med_config))}{get_hostname()}{get_home_url_port(get_port(med_config))}"
 
 
-def get_home_path(med_config=get_med_config()):
-    return med_config["home_path"]
+def get_installation_subdirectory(med_config):
+    return med_config["subdirectory"]
+
+
+def get_route_prefix(subdirectory):
+    return "" if subdirectory is "" else f"/{subdirectory}"
+
+
+def get_static_path_offset(subdirectory):
+    return "" if subdirectory is "" else f"{subdirectory}/"
+
+
+def get_cas_client_service_url(med_config):
+    return f"{get_host_url(med_config)}/{get_route_prefix(get_installation_subdirectory(med_config))}login?next={get_profile_route_name()}"
+
+
+def get_cas_client_version(med_config):
+    return med_config["casclient"]["version"]
+
+
+def get_cas_client_server_url(med_config):
+    return med_config["casclient"]["server_url"]
 
 
 def get_profile_route_name():

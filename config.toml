@@ -1,7 +1,10 @@
+# NOTE: Do not include leading or trailing slashes in the
+# subdirectory.
+subdirectory = ""
+
 host = "localhost"
 port = 6543
 scheme = "http"
-home_path = ""
 session_factory = "todo_add_a_secret"
 
 # https://github.com/python-cas/python-cas
