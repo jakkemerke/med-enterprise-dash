@@ -32,9 +32,9 @@
 	    <h1>Auth</h1>
             <ul>
 		{% if username %}
-		<li><a href="/logout">Logout</a></li>
+		<li><a href="/{{route_prefix}}logout">Logout</a></li>
 		{% else %}
-		<li><a href="/login">Login</a></li>
+		<li><a href="/{{route_prefix}}login">Login</a></li>
 		{% endif %}
             </ul>
         </div>

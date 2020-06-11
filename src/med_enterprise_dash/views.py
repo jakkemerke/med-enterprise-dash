@@ -2,12 +2,13 @@ from pyramid.response import Response
 import pyramid.httpexceptions as exc
 
 from auth import get_auth_client
-from med_config import get_med_config
 from utils import (
     get_apps_route_name,
+    get_home_path,
     get_home_route_name,
     get_login_route_name,
     get_logout_callback_route_name,
+    get_med_config,
     get_profile_route_name,
     get_username,
     is_logged_in,
@@ -23,6 +24,7 @@ def get_home_view(request):
     return {
         "name": get_home_route_name(),
         "username": get_username(request),
+        "route_prefix": get_home_path(),
     }
 
 
@@ -73,6 +75,7 @@ def logout_callback(request):
     request.session.invalidate()
     return {
         "name": get_logout_callback_route_name(),
+        "route_prefix": get_home_path(),
     }
 
 
@@ -82,6 +85,7 @@ def profile(request):
         return {
             "name": get_profile_route_name(),
             "username": get_username(request),
+            "route_prefix": get_home_path(),
             "apps": [
                 # {"route": "#", "name": "Appointments"},
                 # {"route": "#", "name": "AppointmentsLite"},
@@ -106,6 +110,7 @@ def apps(request):
         return {
             "name": get_apps_route_name(),
             "username": get_username(request),
+            "route_prefix": get_home_path(),
         }
     else:
         raise exc.HTTPFound(request.route_url(get_login_route_name()))

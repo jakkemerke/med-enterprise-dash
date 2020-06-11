@@ -1,3 +1,6 @@
+host = "localhost"
+port = 6543
+scheme = "http"
 home_path = ""
 session_factory = "todo_add_a_secret"
 

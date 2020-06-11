@@ -1,13 +1,32 @@
-def get_port():
-    return 6543
+from med_config import get_med_config
 
 
-def get_hostname():
-    return "localhost"
+def get_port(med_config=get_med_config()):
+    return med_config["port"]
 
 
-def get_host_url():
-    return f"{get_hostname()}:{get_port()}"
+def get_hostname(med_config=get_med_config()):
+    return med_config["host"]
+
+
+def get_scheme(med_config=get_med_config()):
+    return med_config["scheme"]
+
+
+def get_home_url_port(port):
+    return "" if port == "" else f":{port}"
+
+
+def get_home_url_scheme(scheme):
+    return "" if scheme == "" else f"{scheme}://"
+
+
+def get_host_url(med_config):
+    return f"{get_home_url_scheme(get_scheme(med_config))}{get_hostname()}{get_home_url_port(get_port(med_config))}"
+
+
+def get_home_path(med_config=get_med_config()):
+    return med_config["home_path"]
 
 
 def get_profile_route_name():
