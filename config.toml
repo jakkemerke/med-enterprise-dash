@@ -1,5 +1,5 @@
-# This typically needs a trailing slash.
-home_path = "/"
+home_path = ""
+session_factory = "todo_add_a_secret"
 
 # https://github.com/python-cas/python-cas
 [casclient]
