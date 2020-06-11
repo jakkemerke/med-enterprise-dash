@@ -2,19 +2,14 @@ from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.session import SignedCookieSessionFactory
 
-from utils import get_port, get_hostname, get_home_path, get_host_url
+from utils import get_port, get_hostname, get_home_path
 from apps.routes import includeme
 from med_config import get_med_config
 
 
-def get_session_factory(med_config=get_med_config()):
+def get_session_factory(med_config):
     return SignedCookieSessionFactory(med_config["session_factory"])
 
-def get_static_view_name(med_config, home_path):
-    return f"{get_host_url(med_config)}/{home_path}static"
-
-def get_static_view_name0(med_config, home_path):
-    return f"{home_path}static"
 
 def get_app():
     with Configurator() as config:
@@ -22,7 +17,7 @@ def get_app():
         home_path = get_home_path(med_config)
 
         config.include("pyramid_jinja2")
-        config.set_session_factory(get_session_factory())
+        config.set_session_factory(get_session_factory(med_config))
         config.add_static_view(
             path="med_enterprise_dash:static", name=f"{home_path}static"
         )
