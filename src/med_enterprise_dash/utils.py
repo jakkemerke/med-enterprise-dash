@@ -38,7 +38,7 @@ def get_static_path_offset(subdirectory):
 
 
 def get_cas_client_service_url(med_config):
-    return f"{get_host_url(med_config)}/{get_route_prefix(get_installation_subdirectory(med_config))}login?next={get_profile_route_name()}"
+    return f"{get_host_url(med_config)}/{get_static_path_offset(get_installation_subdirectory(med_config))}login?next={get_profile_route_name()}"
 
 
 def get_cas_client_version(med_config):
