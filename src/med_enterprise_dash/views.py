@@ -14,6 +14,8 @@ from utils import (
     get_username,
     is_logged_in,
 )
+from micro_services import get_apps_list
+
 
 # import logging
 # log = logging.getLogger(__name__)
@@ -23,6 +25,7 @@ cas_client = get_auth_client(get_med_config())
 
 def get_clientside_path_offset():
     return get_static_path_offset(get_installation_subdirectory(get_med_config()))
+
 
 def get_home_view(request):
     return {
@@ -90,15 +93,7 @@ def profile(request):
             "name": get_profile_route_name(),
             "username": get_username(request),
             "route_prefix": get_clientside_path_offset(),
-            "apps": [
-                # {"route": "#", "name": "Appointments"},
-                # {"route": "#", "name": "AppointmentsLite"},
-                # {"route": "#", "name": "DataEntry"},
-                # {"route": "#", "name": "Events"},
-                # {"route": "#", "name": "PatientPortal"},
-                # {"route": "#", "name": "SearchPatients"},
-                # {"route": "#", "name": "SystemStatus"},
-            ],
+            "apps": get_apps_list(get_username(request)),
             "external_links": [
                 # {"url": "#", "name": "Link1"},
                 # {"url": "#", "name": "Link2"},

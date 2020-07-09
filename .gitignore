@@ -1,6 +1,7 @@
 # Forget these =P
 
 $RECYCLE.BIN/
+*.bak
 *.egg-info
 *.out
 *.pyc
@@ -11,3 +12,4 @@ Desktop.ini
 Thumbs.db
 __pycache__
 sandbox*/*
+lib/*

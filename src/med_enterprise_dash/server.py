@@ -17,6 +17,7 @@ from med_config import get_med_config
 def notfound(request):
     return HTTPNotFound()
 
+
 def get_session_factory(med_config):
     return SignedCookieSessionFactory(med_config["session_factory"])
 
