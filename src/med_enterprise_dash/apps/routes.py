@@ -76,8 +76,40 @@ def get_api_test_search_route():
     return "/api/test/search"
 
 
+def get_api_test_add_dropin_route():
+    return "/api/test/add_dropin"
+
+
 def get_api_test_record_route():
     return "/api/test/record"
+
+
+def get_api_test_add_interaction_route():
+    return "/api/test/add_interaction"
+
+
+def get_api_test_appointment_route():
+    return "/api/test/appointment"
+
+
+def get_api_test_add_message_route():
+    return "/api/test/add_message"
+
+
+def get_api_test_clear_hold_route():
+    return "/api/test/clear_hold"
+
+
+def get_api_test_finish_route():
+    return "/api/test/finish"
+
+
+def get_api_test_reassign_interaction_route():
+    return "/api/test/reassign_interaction"
+
+
+def get_api_test_resolve_interaction_route():
+    return "/api/test/resolve_interaction"
 
 
 # TODO: Make this an enabled option via the toml config.
@@ -126,7 +158,9 @@ def includeme(config):
     config.add_route(get_status_route_name(), get_status_route())
     config.add_view(get_status_view, route_name=get_status_route_name())
 
+    # NOTE: CORS and test APIs follow.
     config.add_subscriber(add_cors_headers_response_callback, NewRequest)
+
     config.add_route(
         get_api_test_current_user_route_name(), get_api_test_current_user_route()
     )
@@ -194,6 +228,7 @@ def includeme(config):
         renderer="json",
     )
 
+    # ======== SEARCH
     config.add_route(
         get_api_test_search_route_name(), get_api_test_search_route(),
     )
@@ -204,10 +239,86 @@ def includeme(config):
     )
 
     config.add_route(
+        get_api_test_add_dropin_route_name(), get_api_test_add_dropin_route(),
+    )
+    config.add_view(
+        get_api_test_add_dropin_view,
+        route_name=get_api_test_add_dropin_route_name(),
+        renderer="json",
+    )
+
+    # ======== RECORD aka CONTACT
+    config.add_route(
         get_api_test_record_route_name(), get_api_test_record_route(),
     )
     config.add_view(
         get_api_test_record_view,
         route_name=get_api_test_record_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_add_interaction_route_name(), get_api_test_add_interaction_route(),
+    )
+    config.add_view(
+        get_api_test_add_interaction_view,
+        route_name=get_api_test_add_interaction_route_name(),
+        renderer="json",
+    )
+
+    # ======== APPOINTMENT aka INTERACTION aka CASE
+    config.add_route(
+        get_api_test_appointment_route_name(), get_api_test_appointment_route(),
+    )
+    config.add_view(
+        get_api_test_appointment_view,
+        route_name=get_api_test_appointment_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_add_message_route_name(), get_api_test_add_message_route(),
+    )
+    config.add_view(
+        get_api_test_add_message_view,
+        route_name=get_api_test_add_message_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_clear_hold_route_name(), get_api_test_clear_hold_route(),
+    )
+    config.add_view(
+        get_api_test_clear_hold_view,
+        route_name=get_api_test_clear_hold_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_finish_route_name(), get_api_test_finish_route(),
+    )
+    config.add_view(
+        get_api_test_finish_view,
+        route_name=get_api_test_finish_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_reassign_interaction_route_name(),
+        get_api_test_reassign_interaction_route(),
+    )
+    config.add_view(
+        get_api_test_reassign_interaction_view,
+        route_name=get_api_test_reassign_interaction_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_resolve_interaction_route_name(),
+        get_api_test_resolve_interaction_route(),
+    )
+    config.add_view(
+        get_api_test_resolve_interaction_view,
+        route_name=get_api_test_resolve_interaction_route_name(),
         renderer="json",
     )

@@ -20,6 +20,7 @@ def get_api_test_current_user_route_name():
     return "ApiTestCurrentUser"
 
 
+# TODO: Make the date dynamic.
 def get_api_test_filters_view(request):
     return {"teamId": 102, "userId": -1, "date": "2020-08-10"}
 
@@ -62,6 +63,7 @@ def get_api_test_appt_users_route_name():
     return "ApiTestApptUsers"
 
 
+# TODO: Make the datetimes dynamic.
 def get_api_test_appointments_view(request):
     return [
         {
@@ -309,6 +311,7 @@ def get_api_test_update_condition_route_name():
     return "ApiTestUpdate"
 
 
+# ======== SEARCH ====================================================
 def get_api_test_search_view(request):
     return [
         {
@@ -353,9 +356,119 @@ def get_api_test_search_route_name():
     return "ApiTestSearch"
 
 
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_add_dropin_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+        "appointment": {"interactionId": 98765},
+    }
+
+
+def get_api_test_add_dropin_route_name():
+    return "ApiTestAddDropin"
+
+
+# TODO: Add the static example.
 def get_api_test_record_view(request):
     return {"stub": True}
 
 
 def get_api_test_record_route_name():
     return "ApiTestRecord"
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_add_interaction_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+        "appointment": {"interactionId": 98765},
+    }
+
+
+def get_api_test_add_interaction_route_name():
+    return "ApiTestAddInteraction"
+
+
+# ======== APPOINTMENT aka INTERACTION aka CASE ======================
+def get_api_test_appointment_view(request):
+    return {"stub": True}
+
+
+def get_api_test_appointment_route_name():
+    return "ApiTestAppointment"
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_add_message_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+    }
+
+
+def get_api_test_add_message_route_name():
+    return "ApiTestAddMessage"
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_clear_hold_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+    }
+
+
+def get_api_test_clear_hold_route_name():
+    return "ApiTestClearHold"
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_finish_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+    }
+
+
+def get_api_test_finish_route_name():
+    return "ApiTestFinish"
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_reassign_interaction_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+    }
+
+
+def get_api_test_reassign_interaction_route_name():
+    return "ApiTestReassignInteraction"
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_api_test_resolve_interaction_view(request):
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+    }
+
+
+def get_api_test_resolve_interaction_route_name():
+    return "ApiTestResolveInteraction"
