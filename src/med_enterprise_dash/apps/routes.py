@@ -72,6 +72,14 @@ def get_api_test_update_condition_route():
     return "/api/test/update_condition"
 
 
+def get_api_test_search_route():
+    return "/api/test/search"
+
+
+def get_api_test_record_route():
+    return "/api/test/record"
+
+
 # TODO: Make this an enabled option via the toml config.
 from pyramid.events import NewRequest
 
@@ -183,5 +191,23 @@ def includeme(config):
     config.add_view(
         get_api_test_update_condition_view,
         route_name=get_api_test_update_condition_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_search_route_name(), get_api_test_search_route(),
+    )
+    config.add_view(
+        get_api_test_search_view,
+        route_name=get_api_test_search_route_name(),
+        renderer="json",
+    )
+
+    config.add_route(
+        get_api_test_record_route_name(), get_api_test_record_route(),
+    )
+    config.add_view(
+        get_api_test_record_view,
+        route_name=get_api_test_record_route_name(),
         renderer="json",
     )

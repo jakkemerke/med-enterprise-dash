@@ -307,3 +307,55 @@ def get_api_test_update_condition_view(request):
 
 def get_api_test_update_condition_route_name():
     return "ApiTestUpdate"
+
+
+def get_api_test_search_view(request):
+    return [
+        {
+            "id": "987654321",
+            "recordId": "1234",
+            "name": "Alex Lastname",
+            "email": "alex@foo.bar",
+            "phone": "555-1212",
+        },
+        {
+            "id": "987654321",
+            "recordId": "1234",
+            "name": "Billie Lastname",
+            "email": "billie@foo.bar",
+            "phone": "555-1212",
+        },
+        {
+            "id": "987654321",
+            "recordId": "1234",
+            "name": "Carol Lastname",
+            "email": "carol@foo.bar",
+            "phone": "555-1212",
+        },
+        {
+            "id": "987654321",
+            "recordId": "1234",
+            "name": "DJ Lastname",
+            "email": "dj.the.dj@foo.bar",
+            "phone": "555-1212",
+        },
+        {
+            "id": "987654321",
+            "recordId": "1234",
+            "name": "Nobody Lastname",
+            "email": "nobody@foo.bar",
+            "phone": "555-1212",
+        },
+    ]
+
+
+def get_api_test_search_route_name():
+    return "ApiTestSearch"
+
+
+def get_api_test_record_view(request):
+    return {"stub": True}
+
+
+def get_api_test_record_route_name():
+    return "ApiTestRecord"
