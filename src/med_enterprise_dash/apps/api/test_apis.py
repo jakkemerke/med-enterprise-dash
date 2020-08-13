@@ -1,4 +1,10 @@
+from datetime import date
+
 from pyramid.view import view_config
+
+
+def get_today_string():
+    return f"{date.today()}"
 
 
 # TODO: Fill in more values.
@@ -50,14 +56,80 @@ def get_test_contact():
     }
 
 
-# TODO: Fill in.
+# TODO: Verify the dates match the API in operations.
 def get_test_history():
-    return []
+    return [
+        {
+            "interactionId": "123",
+            "appointmentId": "2",
+            "interactionSubject": "Testing",
+            "interactionTeamName": "Team Red",
+            "interactionAssignedToName": "Alex Great",
+            "interactionMedium": "In Person",
+            "interactionState": "Open",
+            "interactionLastUpdatedDateOnly": "2020-08-11T09:00:04",
+            "interactionCreatedOn": "2020-08-11T09:00:04",
+            "appointmentStartOn": "2020-08-11T09:00:00",
+            "createdOnOrStartOnIso": "2020-08-11T09:00:04",
+            "createdOnOrStartOn": "Tue, Aug 11, 2020 - 9:00 AM",
+        },
+        {
+            "interactionId": "124",
+            "appointmentId": "3",
+            "interactionSubject": "Research",
+            "interactionTeamName": "Team Red",
+            "interactionAssignedToName": "Alex Great",
+            "interactionMedium": "In Person",
+            "interactionState": "Open",
+            "interactionLastUpdatedDateOnly": "2020-08-11T09:00:04",
+            "interactionCreatedOn": "2020-08-11T09:00:04",
+            "appointmentStartOn": "2020-08-11T09:00:00",
+            "createdOnOrStartOnIso": "2020-08-11T09:00:04",
+            "createdOnOrStartOn": "Tue, Aug 11, 2020 - 9:00 AM",
+        },
+        {
+            "interactionId": "125",
+            "appointmentId": "4",
+            "interactionSubject": "Lunch meeting",
+            "interactionTeamName": "Team Red",
+            "interactionAssignedToName": "Alex Great",
+            "interactionMedium": "In Person",
+            "interactionState": "Resolved",
+            "interactionLastUpdatedDateOnly": "2020-08-11T09:00:04",
+            "interactionCreatedOn": "2020-08-11T09:00:04",
+            "appointmentStartOn": "2020-08-11T09:00:00",
+            "createdOnOrStartOnIso": "2020-08-11T09:00:04",
+            "createdOnOrStartOn": "Tue, Aug 11, 2020 - 9:00 AM",
+        },
+    ]
 
 
-# TODO: Fill in.
 def get_test_messages():
-    return []
+    return [
+        {
+            "interactionId": 12345,
+            "eventId": 1234567891,
+            "attachmentIds": None,
+            "attachments": {},
+            "subject": "",
+            "date": "8/11/2020 9:05:37 AM",
+            "messageContent": "<p>Thanks for all the fish.</p>",
+            "content": "Thanks for all the fish.",
+        },
+        {
+            "interactionId": 12345,
+            "eventId": 1234567890,
+            "attachmentIds": [235, 236],
+            "attachments": [
+                {"attachmentId": "235", "attachmentFilename": "bar.txt",},
+                {"attachmentId": "236", "attachmentFilename": "photo.png",},
+            ],
+            "subject": "",
+            "date": "8/11/2020 9:01:00 AM",
+            "messageContent": "<p>Hello world.</p>",
+            "content": "Hello world.",
+        },
+    ]
 
 
 # TODO: Fill in more values.
@@ -79,7 +151,7 @@ def get_test_interaction():
         "createdOn": "",
         "expectedGradTerm": "",
         "honors": "",
-        "id": "",
+        "id": "12345",
         "interactionPriority": "",
         "interactionState": "Open",
         "interactionThreadLastUpdated": "",
@@ -103,16 +175,30 @@ def get_test_interaction():
     }
 
 
-# TODO: Fill in more values.
-# NOTE: This one actually returns a blob of html.
 def get_test_contact_attachments():
     return {
-        "attachmentsSba": "",
-        "attachmentsMcecs": "",
-        # "mcecs": [
-        # ],
-        # "sba": [
-        # ],
+        "engineering": [
+            {
+                "objectType": "contact",
+                "contactId": "123",
+                "attachmentId": "234",
+                "attachmentFilename": "foo.txt",
+            }
+        ],
+        "business": [
+            {
+                "objectType": "contact",
+                "contactId": "123",
+                "attachmentId": "235",
+                "attachmentFilename": "bar.txt",
+            },
+            {
+                "objectType": "contact",
+                "contactId": "123",
+                "attachmentId": "236",
+                "attachmentFilename": "photo.png",
+            },
+        ],
     }
 
 
@@ -135,9 +221,8 @@ def get_api_test_current_user_route_name():
     return "ApiTestCurrentUser"
 
 
-# TODO: Make the date dynamic.
 def get_api_test_filters_view(request):
-    return {"teamId": 102, "userId": -1, "date": "2020-08-10"}
+    return {"teamId": 102, "userId": -1, "date": get_today_string()}
 
 
 def get_api_test_filters_route_name():
@@ -178,7 +263,6 @@ def get_api_test_appt_users_route_name():
     return "ApiTestApptUsers"
 
 
-# TODO: Make the datetimes dynamic.
 def get_api_test_appointments_view(request):
     return [
         {
@@ -189,7 +273,7 @@ def get_api_test_appointments_view(request):
             "contactName": "Alex Lastname",
             "gradExpected": "202302",
             "honors": "yes",
-            "interactionCreatedOn": "2020-08-10T09:53",
+            "interactionCreatedOn": f"{get_today_string()}T09:53",
             "interactionId": "97",
             "interactionOwnerId": "22",
             "interactionOwnerName": "Alex Great",
@@ -201,7 +285,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "Pre-Medicine",
             "reasons": "Reasons go here.",
-            "startOn": "2020-08-10T10:00",
+            "startOn": f"{get_today_string()}T10:00",
             "subject": "Biology is easy",
             "teamId": "101",
             "teamName": "Team Red",
@@ -215,7 +299,7 @@ def get_api_test_appointments_view(request):
             "contactName": "Billie Lastname",
             "gradExpected": "unsure",
             "honors": "no",
-            "interactionCreatedOn": "2020-08-10T13:45",
+            "interactionCreatedOn": f"{get_today_string()}T13:45",
             "interactionId": "98",
             "interactionOwnerId": "1",
             "interactionOwnerName": "(none)",
@@ -227,7 +311,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T14:00",
+            "startOn": f"{get_today_string()}T14:00",
             "subject": "Biology is hard",
             "teamId": "101",
             "teamName": "Team Red",
@@ -241,7 +325,7 @@ def get_api_test_appointments_view(request):
             "contactName": "Carol Lastname",
             "gradExpected": "graduated",
             "honors": "",
-            "interactionCreatedOn": "2020-08-10T14:50",
+            "interactionCreatedOn": f"{get_today_string()}T14:50",
             "interactionId": "99",
             "interactionOwnerId": "",
             "interactionOwnerName": "",
@@ -253,7 +337,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T15:00",
+            "startOn": f"{get_today_string()}T15:00",
             "subject": "Biology is awesome",
             "teamId": "101",
             "teamName": "Team Red",
@@ -267,7 +351,7 @@ def get_api_test_appointments_view(request):
             "contactName": "DJ Lastname",
             "gradExpected": "graduated",
             "honors": "",
-            "interactionCreatedOn": "2020-08-10T16:00",
+            "interactionCreatedOn": f"{get_today_string()}T16:00",
             "interactionId": "99",
             "interactionOwnerId": "",
             "interactionOwnerName": "",
@@ -279,7 +363,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T16:30",
+            "startOn": f"{get_today_string()}T16:30",
             "subject": "Biology is awesome also",
             "teamId": "101",
             "teamName": "Team Red",
@@ -293,7 +377,7 @@ def get_api_test_appointments_view(request):
             "contactName": "DJ Lastname",
             "gradExpected": "graduated",
             "honors": "",
-            "interactionCreatedOn": "2020-08-10T16:00",
+            "interactionCreatedOn": f"{get_today_string()}T16:00",
             "interactionId": "99",
             "interactionOwnerId": "",
             "interactionOwnerName": "",
@@ -305,7 +389,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T16:30",
+            "startOn": f"{get_today_string()}T16:30",
             "subject": "Biology is awesome also",
             "teamId": "101",
             "teamName": "Team Red",
@@ -319,7 +403,7 @@ def get_api_test_appointments_view(request):
             "contactName": "DJ Lastname",
             "gradExpected": "graduated",
             "honors": "",
-            "interactionCreatedOn": "2020-08-10T16:00",
+            "interactionCreatedOn": f"{get_today_string()}T16:00",
             "interactionId": "99",
             "interactionOwnerId": "",
             "interactionOwnerName": "",
@@ -331,7 +415,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T16:30",
+            "startOn": f"{get_today_string()}T16:30",
             "subject": "Biology is awesome also",
             "teamId": "101",
             "teamName": "Team Red",
@@ -345,7 +429,7 @@ def get_api_test_appointments_view(request):
             "contactName": "DJ Lastname",
             "gradExpected": "graduated",
             "honors": "",
-            "interactionCreatedOn": "2020-08-10T16:00",
+            "interactionCreatedOn": f"{get_today_string()}T16:00",
             "interactionId": "99",
             "interactionOwnerId": "",
             "interactionOwnerName": "",
@@ -357,7 +441,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Alex Great",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T16:30",
+            "startOn": f"{get_today_string()}T16:30",
             "subject": "Biology is awesome also",
             "teamId": "101",
             "teamName": "Team Red",
@@ -383,7 +467,7 @@ def get_api_test_appointments_view(request):
             "ownerName": "Xebeche",
             "preprof": "",
             "reasons": "",
-            "startOn": "2020-08-10T16:30",
+            "startOn": f"{get_today_string()}T16:30",
             "subject": "Biology Tests",
             "teamId": "101",
             "teamName": "Team Red",
@@ -486,7 +570,6 @@ def get_api_test_add_dropin_route_name():
     return "ApiTestAddDropin"
 
 
-# TODO: Add the static example.
 def get_api_test_record_view(request):
     return {
         "attachments": get_test_contact_attachments(),
