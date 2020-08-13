@@ -1,6 +1,121 @@
 from pyramid.view import view_config
 
 
+# TODO: Fill in more values.
+def get_test_student():
+    return {
+        "academicAdvisor": "Alex Great",
+        "academicStanding": "",
+        "currentStudentLevel": "",
+        "classStanding": "",
+        "major": "Biology",
+        "minor": "Chemistry",
+        "preprof": "Pre-Med",
+        "gpaPsuUndergradTrimmed": "",
+        "gpaOverallUndergradTrimmed": "",
+        "hoursOverallUndergradTrimmed": "",
+        "attendedOrientation": "",
+        "hasAdvisingHolds": True,
+        "holdsReg": False,
+        "admitTerm": "",
+        "latestDecision": "",
+        "appliedToGraduate": "",
+        "collegeCode": "",
+        "attribCode": "",
+        "internationalStudent": "",
+        "coenrolled": "",
+        "attendanceTermLast": "",
+        "certDeclaration": "",
+        "honorsEnrollment": "",
+        "degreeGuarantee": "",
+    }
+
+
+# TODO: Verify the return data matches the API in operations.
+def get_test_contact():
+    return {
+        "fullName": "DJ Lastname",
+        "firstName": "DJ",
+        "middleName": "",
+        "lastName": "Lastname",
+        "badgeId": "987654321",
+        "email": "dj.the.dj@foo.bar",
+        "id": "453",
+        "username": "djdjdj",
+        "phone": "555-1212",
+        "veteran": True,
+        "residency": "Domestic",
+        "gender": "Spivak",
+        "studentRecord": get_test_student(),
+    }
+
+
+# TODO: Fill in.
+def get_test_history():
+    return []
+
+
+# TODO: Fill in.
+def get_test_messages():
+    return []
+
+
+# TODO: Fill in more values.
+def get_test_interaction():
+    return {
+        "appointmentFk": "",
+        "apptType": "",
+        "aptCondition": "",
+        "aptFirstName": "",
+        "aptLastName": "",
+        "aptName": "",
+        "aptNotes": "",
+        "aptReasons": "",
+        "ciwiName": "",
+        "ciwiReservedUserID": "",
+        "contact": get_test_contact(),
+        "contactId": "",
+        "contactName": "",
+        "createdOn": "",
+        "expectedGradTerm": "",
+        "honors": "",
+        "id": "",
+        "interactionPriority": "",
+        "interactionState": "Open",
+        "interactionThreadLastUpdated": "",
+        "lastContactMessage": "",
+        "lastResolvedAt": "",
+        "lastUpdatedDate": "",
+        "majorAsserted": "",
+        "mediaType": "",
+        "messageCount": "",
+        "ownerId": "",
+        "ownerName": "",
+        "preProfAsserted": "",
+        "replyState": "",
+        "sessionEndTime": "",
+        "sessionStartTime": "",
+        "subject": "",
+        "subtopic": "",
+        "teamName": "",
+        "topic": "",
+        "unfinished": True,
+    }
+
+
+# TODO: Fill in more values.
+# NOTE: This one actually returns a blob of html.
+def get_test_contact_attachments():
+    return {
+        "attachmentsSba": "",
+        "attachmentsMcecs": "",
+        # "mcecs": [
+        # ],
+        # "sba": [
+        # ],
+    }
+
+
 def get_api_test_current_user_view(request):
     return {
         "id": "999",
@@ -373,7 +488,11 @@ def get_api_test_add_dropin_route_name():
 
 # TODO: Add the static example.
 def get_api_test_record_view(request):
-    return {"stub": True}
+    return {
+        "attachments": get_test_contact_attachments(),
+        "contact": get_test_contact(),
+        "history": get_test_history(),
+    }
 
 
 def get_api_test_record_route_name():
@@ -397,7 +516,14 @@ def get_api_test_add_interaction_route_name():
 
 # ======== APPOINTMENT aka INTERACTION aka CASE ======================
 def get_api_test_appointment_view(request):
-    return {"stub": True}
+    return {
+        "attachments": get_test_contact_attachments(),
+        "contact": get_test_contact(),
+        "history": get_test_history(),
+        "interaction": get_test_interaction(),
+        "messages": get_test_messages(),
+        "pvtNote": "Private note goes here. Not everyone has one.",
+    }
 
 
 def get_api_test_appointment_route_name():
