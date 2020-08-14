@@ -30,11 +30,11 @@ def get_installation_subdirectory(med_config):
 
 
 def get_route_prefix(subdirectory):
-    return "" if subdirectory is "" else f"/{subdirectory}"
+    return "" if subdirectory == "" else f"/{subdirectory}"
 
 
 def get_static_path_offset(subdirectory):
-    return "" if subdirectory is "" else f"{subdirectory}/"
+    return "" if subdirectory == "" else f"{subdirectory}/"
 
 
 def get_cas_client_service_url(med_config):
