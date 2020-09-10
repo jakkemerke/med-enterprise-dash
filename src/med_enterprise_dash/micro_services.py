@@ -115,7 +115,8 @@ def get_permissions(username):
     return json.loads(response.read().decode("utf-8"))
 
 
-def get_apps_list(username):
+# NOTE: wip
+def get_apps_list2(username):
     user_roles = get_user_roles(get_permissions(username))
     is_sysadmin = has_role_sysadmin(user_roles)
 
@@ -139,3 +140,7 @@ def get_apps_list(username):
         apps_routes.append({"route": "#", "name": "SystemStatus"})
 
     return apps_routes
+
+
+def get_apps_list(username):
+    return []

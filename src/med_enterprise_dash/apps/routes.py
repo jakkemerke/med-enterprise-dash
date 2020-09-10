@@ -141,6 +141,7 @@ def includeme(config):
     config.add_view(
         get_appointments_alternate_view,
         route_name=get_appointments_alternate_route_name(),
+        renderer="./templates/apps/appointments_alternate.jinja2",
     )
 
     config.add_route(get_data_entry_route_name(), get_data_entry_route())
