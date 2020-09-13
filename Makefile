@@ -30,7 +30,8 @@ fe:
 	@cd lib/med-appointments/ \
             && make init \
             && make rebuild \
-            && rsync -va ./output/ ../../src/med_enterprise_dash/static/med-appointments/ \
+            && rsync -av --delete ./output/ \
+                ../../src/med_enterprise_dash/static/med-appointments/ \
             && make clean
 	@echo done
 

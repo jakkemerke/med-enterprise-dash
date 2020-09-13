@@ -16,6 +16,14 @@ def get_appointments_alternate_route():
     return "/appointments_alternate"
 
 
+# def get_appointments_alternate_route():
+#     return "/appointments_alternate/static/css"
+
+
+# def get_appointments_alternate_route():
+#     return "/appointments_alternate/static/js"
+
+
 def get_data_entry_route():
     return "/data_entry"
 
@@ -131,10 +139,16 @@ def add_cors_headers_response_callback(event):
     event.request.add_response_callback(cors_headers)
 
 
+def notfound(request):
+    # return HTTPTemporaryRedirect()
+    return Response('No Content', status='204 No Content')
+
+    
 def includeme(config):
     config.add_route(get_appointments_route_name(), get_appointments_route())
     config.add_view(get_appointments_view, route_name=get_appointments_route_name())
 
+    
     config.add_route(
         get_appointments_alternate_route_name(), get_appointments_alternate_route()
     )
@@ -143,6 +157,15 @@ def includeme(config):
         route_name=get_appointments_alternate_route_name(),
         renderer="./templates/apps/appointments_alternate.jinja2",
     )
+    config.add_static_view(
+        path="med_enterprise_dash:static/med-appointments/css",
+        name=f"appointments_alternate/static/css"
+    )
+    config.add_static_view(
+        path="med_enterprise_dash:static/med-appointments/js",
+        name=f"appointments_alternate/static/js"
+    )
+
 
     config.add_route(get_data_entry_route_name(), get_data_entry_route())
     config.add_view(get_data_entry_view, route_name=get_data_entry_route_name())
