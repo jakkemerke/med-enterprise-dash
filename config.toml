@@ -7,14 +7,22 @@ port = 6543
 scheme = "http"
 session_factory = "todo_add_a_secret"
 
+
+[developer]
+auto_login = true
+username = "admin"
+
+
 # https://github.com/python-cas/python-cas
 [casclient]
 version = "3"
 server_url = "https://django-cas-ng-demo-server.herokuapp.com/cas/"
 
+
 [micro_services.permissions]
 url = "https://your.endpoint.here/"
 token = "todo_add_a_secret"
+
 
 [micro_services.permissions.map]
 appointments = "appointments"

@@ -1,18 +1,12 @@
 from pyramid.response import Response
 import pyramid.httpexceptions as exc
 
-from utils import (
-    # get_apps_route_name,
-    # get_home_route_name,
+from config import (
     get_installation_subdirectory,
-    # get_login_route_name,
-    # get_logout_callback_route_name,
     get_med_config,
-    # get_profile_route_name,
     get_static_path_offset,
-    get_username,
-    # is_logged_in,
 )
+from utils.session import get_username
 from micro_services import get_apps_list
 
 
@@ -20,6 +14,7 @@ def get_clientside_path_offset():
     return get_static_path_offset(get_installation_subdirectory(get_med_config()))
 
 
+# TODO: Reenable session check.
 def get_appointments_alternate_view(request):
     # from pyramid.response import Response
 
@@ -48,7 +43,3 @@ def get_appointments_alternate_view(request):
             # {"url": "#", "name": "Link2"},
         ],
     }
-
-
-def get_appointments_alternate_route_name():
-    return "Appointments_Alternate"

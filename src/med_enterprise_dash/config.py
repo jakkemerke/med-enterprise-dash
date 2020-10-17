@@ -1,4 +1,4 @@
-from med_config import get_med_config
+from utils.toml import get_med_config
 
 
 def get_port(med_config=get_med_config()):
@@ -37,10 +37,6 @@ def get_static_path_offset(subdirectory):
     return "" if subdirectory == "" else f"{subdirectory}/"
 
 
-def get_cas_client_service_url(med_config):
-    return f"{get_host_url(med_config)}/{get_static_path_offset(get_installation_subdirectory(med_config))}login?next={get_profile_route_name()}"
-
-
 def get_cas_client_version(med_config):
     return med_config["casclient"]["version"]
 
@@ -49,36 +45,13 @@ def get_cas_client_server_url(med_config):
     return med_config["casclient"]["server_url"]
 
 
-def get_profile_route_name():
-    return "Profile"
+def get_clientside_path_offset():
+    return get_static_path_offset(get_installation_subdirectory(get_med_config()))
 
 
-def get_apps_route_name():
-    return "Apps"
+def developer_auto_login_enabled(med_config=get_med_config()):
+    return med_config["developer"]["auto_login"]
 
 
-def get_login_route_name():
-    return "Login"
-
-
-def get_home_route_name():
-    return "Home"
-
-
-def get_logout_callback_route_name():
-    return "logout_callback"
-
-
-def get_username(request):
-    if request.session:
-        return request.session["username"]
-    else:
-        return ""
-
-
-def has_username(username):
-    return username and username != ""
-
-
-def is_logged_in(request):
-    return has_username(get_username(request))
+def get_developer_username(med_config=get_med_config()):
+    return med_config["developer"]["username"]

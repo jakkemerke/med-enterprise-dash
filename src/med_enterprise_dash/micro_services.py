@@ -2,7 +2,7 @@ import json
 import ssl
 import urllib.request
 
-from med_config import get_med_config
+from config import get_med_config
 
 
 def get_permissions_url(med_config=get_med_config()):
