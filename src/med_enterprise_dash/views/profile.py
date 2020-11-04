@@ -1,10 +1,9 @@
 import pyramid.httpexceptions as exc
 
-
-from config import get_clientside_path_offset
-from micro_services import get_apps_list
-from routes import get_login_route_name, get_profile_route_name
-from utils.session import get_username
+from med_enterprise_dash.config import get_clientside_path_offset
+from med_enterprise_dash.micro_services import get_apps_list
+from med_enterprise_dash.routes import get_login_route_name, get_profile_route_name
+from med_enterprise_dash.utils.session import get_username
 
 
 def get_url_to_login(request):

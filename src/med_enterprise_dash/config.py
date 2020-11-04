@@ -1,4 +1,4 @@
-from utils.toml import get_med_config
+from med_enterprise_dash.utils.toml import get_med_config
 
 
 def get_port(med_config=get_med_config()):

@@ -1,13 +1,13 @@
 from pyramid.response import Response
 import pyramid.httpexceptions as exc
 
-from config import (
+from med_enterprise_dash.config import (
     get_installation_subdirectory,
     get_med_config,
     get_static_path_offset,
 )
-from utils.session import get_username
-from micro_services import get_apps_list
+from med_enterprise_dash.utils.session import get_username
+from med_enterprise_dash.micro_services import get_apps_list
 
 
 def get_clientside_path_offset():

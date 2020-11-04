@@ -1,21 +1,17 @@
 import os, sys
 import unittest
 
-
 sys.path.insert(
-    0,
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "../src/med_enterprise_dash")
-    ),
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src")),
 )
 
-from __init__ import __version__
-from auth import get_cas_client
-from config import get_hostname
-from routes import get_route_root
-from server import get_session_factory
-from utils.session import has_username
-from utils.toml import get_med_config
+from med_enterprise_dash.__init__ import __version__
+from med_enterprise_dash.auth import get_cas_client
+from med_enterprise_dash.config import get_hostname
+from med_enterprise_dash.routes import get_route_root
+from med_enterprise_dash.server import get_session_factory
+from med_enterprise_dash.utils.session import has_username
+from med_enterprise_dash.utils.toml import get_med_config
 
 
 class TestVersion(unittest.TestCase):
@@ -52,4 +48,4 @@ class TestServer(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    print("stub test")
+    print(__name__)

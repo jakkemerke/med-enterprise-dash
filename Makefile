@@ -51,8 +51,8 @@ fe:
 .PHONY: run
 run:
 	@echo "See server at the following address and port:"
-	@grep '= make_server' -B 1 src/med_enterprise_dash/server.py
-	@python3 src/med_enterprise_dash/server.py
+	@grep '= get_server' -B 1 myapp.py
+	@python3 myapp.py
 
 
 .PHONY: safer
@@ -63,8 +63,13 @@ safer:
 	@echo ''
 
 
+.PHONY: test-all
+test-all:
+	@python3 -m unittest discover
+	@echo ''
+
+
 .PHONY: test
 test:
-	@python3 -m unittest tests.test_med_enterprise_dash
-	@python3 -m unittest tests.test_views
+	@python3 -m unittest discover --start-directory tests/unit_tests
 	@echo ''

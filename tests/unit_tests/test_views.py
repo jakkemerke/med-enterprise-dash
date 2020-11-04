@@ -2,21 +2,25 @@ import os, sys
 import unittest
 
 sys.path.insert(
-    0,
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "../src/med_enterprise_dash")
-    ),
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src")),
 )
 
 from pyramid.request import Request
 
-from routes import get_home_route_name
-from views.apps import apps, get_apps_response
-from views.home import get_home_view
-from views.login import login, get_next, get_cas_client
-from views.logout import logout, get_cas_client
-from views.logout_callback import logout_callback, get_logout_callback_response
-from views.profile import profile, get_url_to_login, get_profile_response
+from med_enterprise_dash.routes import get_home_route_name
+from med_enterprise_dash.views.apps import apps, get_apps_response
+from med_enterprise_dash.views.home import get_home_view
+from med_enterprise_dash.views.login import login, get_next, get_cas_client
+from med_enterprise_dash.views.logout import logout, get_cas_client
+from med_enterprise_dash.views.logout_callback import (
+    logout_callback,
+    get_logout_callback_response,
+)
+from med_enterprise_dash.views.profile import (
+    profile,
+    get_url_to_login,
+    get_profile_response,
+)
 
 
 class TestHome(unittest.TestCase):

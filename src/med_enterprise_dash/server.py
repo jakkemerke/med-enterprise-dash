@@ -1,34 +1,36 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
-from pyramid.session import SignedCookieSessionFactory
+from pyramid.session import SignedCookieSessionFactory, JSONSerializer
 from pyramid.httpexceptions import HTTPNotFound
 
 # TODO: Make this an enabled option via the toml config.
 from pyramid.events import NewRequest
 
-from config import (
+from med_enterprise_dash.config import (
     get_port,
     get_hostname,
     get_route_prefix,
     get_installation_subdirectory,
     get_static_path_offset,
 )
-from routes import *
-from utils.toml import get_med_config
-from views.appointments import get_appointments_view
-from views.appointments_alternate import get_appointments_alternate_view
-from views.apps import apps
-from views.data_entry import get_data_entry_view
-from views.events import get_events_view
-from views.home import get_home_view
-from views.login import login
-from views.logout import logout
-from views.logout_callback import logout_callback
-from views.lookup import get_lookup_view
-from views.portal import get_portal_view
-from views.profile import profile
-from views.status import get_status_view
-from views.test_apis import *
+from med_enterprise_dash.routes import *
+from med_enterprise_dash.utils.toml import get_med_config
+from med_enterprise_dash.views.appointments import get_appointments_view
+from med_enterprise_dash.views.appointments_alternate import (
+    get_appointments_alternate_view,
+)
+from med_enterprise_dash.views.apps import apps
+from med_enterprise_dash.views.data_entry import get_data_entry_view
+from med_enterprise_dash.views.events import get_events_view
+from med_enterprise_dash.views.home import get_home_view
+from med_enterprise_dash.views.login import login
+from med_enterprise_dash.views.logout import logout
+from med_enterprise_dash.views.logout_callback import logout_callback
+from med_enterprise_dash.views.lookup import get_lookup_view
+from med_enterprise_dash.views.portal import get_portal_view
+from med_enterprise_dash.views.profile import profile
+from med_enterprise_dash.views.status import get_status_view
+from med_enterprise_dash.views.test_apis import *
 
 
 def add_cors_headers_response_callback(event):
@@ -53,7 +55,9 @@ def notfound(request):
 
 
 def get_session_factory(med_config):
-    return SignedCookieSessionFactory(med_config["session_factory"])
+    return SignedCookieSessionFactory(
+        med_config["session_factory"], serializer=JSONSerializer()
+    )
 
 
 def get_app():
@@ -314,7 +318,5 @@ def get_app():
         return config.make_wsgi_app()
 
 
-if __name__ == "__main__":
-    # http://localhost:6543/
-    server = make_server(get_hostname(), get_port(), get_app())
-    server.serve_forever()
+def get_server():
+    return make_server(get_hostname(), get_port(), get_app())

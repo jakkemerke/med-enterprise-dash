@@ -1,12 +1,13 @@
 from cas import CASClient
-from config import (
+
+from med_enterprise_dash.config import (
     get_cas_client_server_url,
     get_cas_client_version,
     get_host_url,
     get_installation_subdirectory,
     get_static_path_offset,
 )
-from routes import get_profile_route_name
+from med_enterprise_dash.routes import get_profile_route_name
 
 
 def get_cas_client_service_url(med_config):

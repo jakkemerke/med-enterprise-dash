@@ -1,15 +1,14 @@
 from pyramid.response import Response
 import pyramid.httpexceptions as exc
 
-
-from auth import get_cas_client
-from config import (
+from med_enterprise_dash.auth import get_cas_client
+from med_enterprise_dash.config import (
     developer_auto_login_enabled,
     get_developer_username,
 )
-from routes import get_profile_route_name
-from utils.toml import get_med_config
-from utils.session import is_logged_in
+from med_enterprise_dash.routes import get_profile_route_name
+from med_enterprise_dash.utils.toml import get_med_config
+from med_enterprise_dash.utils.session import is_logged_in
 
 
 def get_param(request, key, failsafe=None):

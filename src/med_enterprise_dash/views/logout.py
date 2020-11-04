@@ -1,9 +1,8 @@
 import pyramid.httpexceptions as exc
 
-
-from auth import get_cas_client
-from routes import get_logout_callback_route_name
-from utils.toml import get_med_config
+from med_enterprise_dash.auth import get_cas_client
+from med_enterprise_dash.routes import get_logout_callback_route_name
+from med_enterprise_dash.utils.toml import get_med_config
 
 
 def logout(request):
