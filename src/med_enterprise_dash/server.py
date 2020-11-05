@@ -25,6 +25,7 @@ from med_enterprise_dash.views.events import get_events_view
 from med_enterprise_dash.views.file_archive import get_file_archive_view
 from med_enterprise_dash.views.home import get_home_view
 from med_enterprise_dash.views.login import login
+from med_enterprise_dash.views.login_verification import get_login_verification_view
 from med_enterprise_dash.views.logout import logout
 from med_enterprise_dash.views.logout_callback import logout_callback
 from med_enterprise_dash.views.lookup import get_lookup_view
@@ -85,6 +86,13 @@ def get_app():
         config.add_route(get_login_route_name(), get_route_login())
         config.add_view(login, route_name=get_login_route_name())
 
+        config.add_route(
+            get_login_verification_route_name(), get_route_login_verification()
+        )
+        config.add_view(
+            get_login_verification_view, route_name=get_login_verification_route_name()
+        )
+
         config.add_route("logout", get_route_logout())
         config.add_view(logout, route_name="logout")
 
@@ -107,10 +115,13 @@ def get_app():
             apps, route_name=get_apps_route_name(), renderer="./templates/apps.jinja2"
         )
 
-        # ======== apps frontends follow.
+        # ======== FRONTENDS =========================================
+
+        # ======== APPOINTMENTS APP
         config.add_route(get_appointments_route_name(), get_appointments_route())
         config.add_view(get_appointments_view, route_name=get_appointments_route_name())
 
+        # ======== APPOINTMENTS_ALTERNATE APP
         config.add_route(
             get_appointments_alternate_route_name(), get_appointments_alternate_route()
         )
@@ -121,34 +132,43 @@ def get_app():
         )
         config.add_static_view(
             path="med_enterprise_dash:static/med-appointments/css",
-            name=f"appointments_alternate/static/css",
+            name=f"apps/appointments_alternate/static/css",
         )
         config.add_static_view(
             path="med_enterprise_dash:static/med-appointments/js",
-            name=f"appointments_alternate/static/js",
+            name=f"apps/appointments_alternate/static/js",
         )
 
+        # ======== DATA_ENTRY APP
         config.add_route(get_data_entry_route_name(), get_data_entry_route())
         config.add_view(get_data_entry_view, route_name=get_data_entry_route_name())
 
+        # ======== EVENTS APP
         config.add_route(get_events_route_name(), get_events_route())
         config.add_view(get_events_view, route_name=get_events_route_name())
 
+        # ======== FILE_ARCHIVE APP
         config.add_route(get_file_archive_route_name(), get_file_archive_route())
         config.add_view(get_file_archive_view, route_name=get_file_archive_route_name())
 
+        # ======== LOOKUP APP
         config.add_route(get_lookup_route_name(), get_lookup_route())
         config.add_view(get_lookup_view, route_name=get_lookup_route_name())
 
+        # ======== PORTAL APP
         config.add_route(get_portal_route_name(), get_portal_route())
         config.add_view(get_portal_view, route_name=get_portal_route_name())
 
+        # ======== STATUS APP
         config.add_route(get_status_route_name(), get_status_route())
         config.add_view(get_status_view, route_name=get_status_route_name())
 
-        # ======== CORS and test APIs follow.
+        # ======== TESTING APIS ======================================
+
+        # ======== CORS
         config.add_subscriber(add_cors_headers_response_callback, NewRequest)
 
+        # ======== APPOINTMENTS, GENERAL, ETC
         config.add_route(
             get_api_test_current_user_route_name(), get_api_test_current_user_route()
         )

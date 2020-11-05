@@ -15,6 +15,14 @@ def get_route_login():
     return "/login/"
 
 
+def get_login_verification_route_name():
+    return "login_verification"
+
+
+def get_route_login_verification():
+    return "/login/verification"
+
+
 def get_logout_route_name():
     return "logout"
 

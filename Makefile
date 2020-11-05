@@ -65,7 +65,7 @@ safer:
 
 .PHONY: test-all
 test-all:
-	@python3 -m unittest discover
+	@python3 -m unittest discover --start-directory tests/
 	@echo ''
 
 
