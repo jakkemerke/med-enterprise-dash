@@ -90,11 +90,13 @@ def get_app():
             get_login_verification_route_name(), get_route_login_verification()
         )
         config.add_view(
-            get_login_verification_view, route_name=get_login_verification_route_name()
+            get_login_verification_view,
+            route_name=get_login_verification_route_name(),
+            renderer="./templates/login_verification.jinja2",
         )
 
-        config.add_route("logout", get_route_logout())
-        config.add_view(logout, route_name="logout")
+        config.add_route(get_logout_route_name(), get_route_logout())
+        config.add_view(logout, route_name=get_logout_route_name())
 
         config.add_route(get_logout_callback_route_name(), get_route_logout_callback())
         config.add_view(
@@ -110,7 +112,7 @@ def get_app():
             renderer="./templates/profile.jinja2",
         )
 
-        config.add_route(get_apps_route_name(), "/apps/")
+        config.add_route(get_apps_route_name(), get_route_apps())
         config.add_view(
             apps, route_name=get_apps_route_name(), renderer="./templates/apps.jinja2"
         )

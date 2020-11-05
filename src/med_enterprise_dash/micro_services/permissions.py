@@ -76,12 +76,6 @@ def get_modes():
     }
 
 
-def get_permissions(username):
-    return get_modes().get(get_permissions_mode(), get_permissions_standard_mode)(
-        username
-    )
-
-
 def get_permissions_mapping():
     return {
         "appointments": {
@@ -110,10 +104,9 @@ def get_permissions_mapping():
     }
 
 
-def get_apps_list(username):
-    permissions_dict = get_permissions(username)
-    apps_list = permissions_dict["apps_list"]
-    is_sysadmin = apps_list["sysadmin"]
+def get_apps_list(permissions_dict):
+    apps_list = permissions_dict.get("apps_list", None)
+    is_sysadmin = get_sysadmin(permissions_dict)
     apps_routes = []
 
     for key in get_permissions_mapping():
@@ -121,3 +114,14 @@ def get_apps_list(username):
             apps_routes.append(get_permissions_mapping().get(key, None))
 
     return apps_routes
+
+
+def get_permissions(username):
+    return get_modes().get(get_permissions_mode(), get_permissions_standard_mode)(
+        username
+    )
+
+
+def get_sysadmin(permissions_dict):
+    apps_list = permissions_dict.get("apps_list", None)
+    return apps_list["sysadmin"]

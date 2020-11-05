@@ -63,13 +63,7 @@ safer:
 	@echo ''
 
 
-.PHONY: test-all
-test-all:
-	@python3 -m unittest discover --start-directory tests/
-	@echo ''
-
-
 .PHONY: test
 test:
-	@python3 -m unittest discover --start-directory tests/unit_tests
+	@python3 -m unittest discover
 	@echo ''
