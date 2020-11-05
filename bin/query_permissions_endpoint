@@ -2,9 +2,9 @@
 
 import os, sys
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src/med_enterprise_dash")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-from micro_services import get_apps_list
+from med_enterprise_dash.micro_services import get_apps_list
     
 if __name__ == "__main__":
     # print(sys.argv[1])

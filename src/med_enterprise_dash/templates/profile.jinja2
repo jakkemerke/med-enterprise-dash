@@ -12,6 +12,13 @@
 <section class="mfws">
     <h1>{{ name }}: {{username}}</h1>
     <p>Stub for user profile information.</p>
+    <h1>Apps</h1>
+    <p>Your account has access to the following:</p>
+    <ul>
+        {% for app in apps %}
+        <li><a href="{{ app.route }}" style="background: black;">{{ app.name }}</a></li>
+        {% endfor %}
+    </ul>
 </section>
 
 {% include "footer.jinja2" %}

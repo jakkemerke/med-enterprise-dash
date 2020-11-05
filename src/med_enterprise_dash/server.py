@@ -22,6 +22,7 @@ from med_enterprise_dash.views.appointments_alternate import (
 from med_enterprise_dash.views.apps import apps
 from med_enterprise_dash.views.data_entry import get_data_entry_view
 from med_enterprise_dash.views.events import get_events_view
+from med_enterprise_dash.views.file_archive import get_file_archive_view
 from med_enterprise_dash.views.home import get_home_view
 from med_enterprise_dash.views.login import login
 from med_enterprise_dash.views.logout import logout
@@ -30,7 +31,7 @@ from med_enterprise_dash.views.lookup import get_lookup_view
 from med_enterprise_dash.views.portal import get_portal_view
 from med_enterprise_dash.views.profile import profile
 from med_enterprise_dash.views.status import get_status_view
-from med_enterprise_dash.views.test_apis import *
+from med_enterprise_dash.views.testing_apis import *
 
 
 def add_cors_headers_response_callback(event):
@@ -132,6 +133,9 @@ def get_app():
 
         config.add_route(get_events_route_name(), get_events_route())
         config.add_view(get_events_view, route_name=get_events_route_name())
+
+        config.add_route(get_file_archive_route_name(), get_file_archive_route())
+        config.add_view(get_file_archive_view, route_name=get_file_archive_route_name())
 
         config.add_route(get_lookup_route_name(), get_lookup_route())
         config.add_view(get_lookup_view, route_name=get_lookup_route_name())
@@ -309,6 +313,16 @@ def get_app():
         config.add_view(
             get_api_test_resolve_interaction_view,
             route_name=get_api_test_resolve_interaction_route_name(),
+            renderer="json",
+        )
+
+        # ======== APPS LIST
+        config.add_route(
+            get_api_test_apps_list_route_name(), get_api_test_apps_list_route(),
+        )
+        config.add_view(
+            get_api_test_apps_list_view,
+            route_name=get_api_test_apps_list_route_name(),
             renderer="json",
         )
 

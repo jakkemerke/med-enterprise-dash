@@ -1,3 +1,4 @@
+# ======== MED =======================================================
 def get_home_route_name():
     return "Home"
 
@@ -46,6 +47,7 @@ def get_route_apps():
     return "/apps/"
 
 
+# ======== APPS ======================================================
 def get_appointments_route_name():
     return "Appointments"
 
@@ -86,6 +88,14 @@ def get_events_route():
     return f"{get_route_apps()}events"
 
 
+def get_file_archive_route_name():
+    return "File_Archive"
+
+
+def get_file_archive_route():
+    return f"{get_route_apps()}file_archive"
+
+
 def get_lookup_route_name():
     return "Lookup"
 
@@ -114,6 +124,7 @@ def get_status_route():
 #     return f"{get_route_apps()}api"
 
 
+# ======== TESTING ===================================================
 def get_api_test_current_user_route():
     return f"{get_route_apps()}api/test/current_user"
 
@@ -184,3 +195,7 @@ def get_api_test_reassign_interaction_route():
 
 def get_api_test_resolve_interaction_route():
     return f"{get_route_apps()}api/test/resolve_interaction"
+
+
+def get_api_test_apps_list_route():
+    return f"{get_route_apps()}api/test/apps_list"

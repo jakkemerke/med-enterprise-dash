@@ -570,6 +570,7 @@ def get_api_test_add_dropin_route_name():
     return "ApiTestAddDropin"
 
 
+# ======== RECORD aka CONTACT ========================================
 def get_api_test_record_view(request):
     return {
         "attachments": get_test_contact_attachments(),
@@ -681,3 +682,33 @@ def get_api_test_resolve_interaction_view(request):
 
 def get_api_test_resolve_interaction_route_name():
     return "ApiTestResolveInteraction"
+
+
+# ======== APPS LIST =================================================
+def get_api_test_apps_list_payload():
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+        "username": "admin",
+        "apps_list": {
+            "appointments": True,
+            "appointments_lite": True,
+            "data_entry": True,
+            "events": True,
+            "file_archive": True,
+            "residents": True,
+            "search_patients": True,
+            "sysadmin": True,
+            "system_status": True,
+        },
+    }
+
+
+def get_api_test_apps_list_route_name():
+    return "ApiTestAppsList"
+
+
+def get_api_test_apps_list_view(request):
+    return get_api_test_apps_list_payload()
