@@ -3,7 +3,7 @@ from typing import Any
 
 def get_username(request: Any) -> str:
     if request and request.session and hasattr(request, "session"):
-        return request.session["username"]
+        return request.session.get("username", "")
     else:
         return ""
 

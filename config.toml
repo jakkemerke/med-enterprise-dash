@@ -3,7 +3,7 @@
 subdirectory = ""
 
 host = "localhost"
-port = 6543
+port = 6544
 scheme = "http"
 session_factory = "todo_add_a_secret"
 

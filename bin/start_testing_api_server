@@ -7,11 +7,11 @@ sys.path.insert(
 )
 
 from wsgiref.simple_server import make_server
-from med_enterprise_dash.app import get_server, get_port, get_hostname
+from med_testing_apis.server import get_server, get_port, get_hostname
 
 
 if __name__ == "__main__":
-    print("See server at the following address and port:")
+    print("See testing api server at the following address and port:")
     print(f"http://{get_hostname()}:{get_port()}/")
     server = get_server()
     server.serve_forever()

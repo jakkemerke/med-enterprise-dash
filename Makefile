@@ -50,9 +50,7 @@ fe:
 
 .PHONY: run
 run:
-	@echo "See server at the following address and port:"
-	@grep '= get_server' -B 1 myapp.py
-	@python3 myapp.py
+	@echo "See the bin/ directory..."
 
 
 .PHONY: safer

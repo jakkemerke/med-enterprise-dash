@@ -9,6 +9,5 @@ from med_enterprise_dash.app import get_server
 
 
 if __name__ == "__main__":
-    # http://localhost:6543/
     server = get_server()
     server.serve_forever()
