@@ -6,6 +6,7 @@ from pyramid.events import NewRequest
 
 from med_testing_apis.routes import *
 from med_testing_apis.views.testing_apis import *
+from med_testing_apis.views.data_entry import *
 
 
 def add_cors_headers_response_callback(event):
@@ -36,13 +37,25 @@ def get_home_view(request):
 def get_app():
     with Configurator() as config:
 
+        # ======== CORS
+        config.add_subscriber(add_cors_headers_response_callback, NewRequest)
+
         # ======== STATIC HOME ROOT
         config.add_route(get_route_home_name(), get_route_home())
         config.add_view(get_home_view, route_name=get_route_home_name())
 
-        # ======== CORS
-        config.add_subscriber(add_cors_headers_response_callback, NewRequest)
+        # ======== AUTH ==============================================
+        # ======== APPS LIST
+        config.add_route(
+            get_api_test_apps_list_route_name(), get_api_test_apps_list_route(),
+        )
+        config.add_view(
+            get_api_test_apps_list_view,
+            route_name=get_api_test_apps_list_route_name(),
+            renderer="json",
+        )
 
+        # ======== APPOINTMENTS ======================================
         # ======== APPOINTMENTS, GENERAL, ETC
         config.add_route(
             get_api_test_current_user_route_name(), get_api_test_current_user_route()
@@ -211,13 +224,87 @@ def get_app():
             renderer="json",
         )
 
-        # ======== APPS LIST
+        # ======== DATA_ENTRY ========================================
+
+        # get_data_entry_organizations
         config.add_route(
-            get_api_test_apps_list_route_name(), get_api_test_apps_list_route(),
+            get_data_entry_organizations_route_name(),
+            get_data_entry_organizations_route(),
         )
         config.add_view(
-            get_api_test_apps_list_view,
-            route_name=get_api_test_apps_list_route_name(),
+            get_data_entry_organizations,
+            route_name=get_data_entry_organizations_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_countries
+        config.add_route(
+            get_data_entry_countries_route_name(), get_data_entry_countries_route(),
+        )
+        config.add_view(
+            get_data_entry_countries,
+            route_name=get_data_entry_countries_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_events
+        config.add_route(
+            get_data_entry_events_route_name(), get_data_entry_events_route(),
+        )
+        config.add_view(
+            get_data_entry_events,
+            route_name=get_data_entry_events_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_traceability
+        config.add_route(
+            get_data_entry_traceability_route_name(),
+            get_data_entry_traceability_route(),
+        )
+        config.add_view(
+            get_data_entry_traceability,
+            route_name=get_data_entry_traceability_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_programs
+        config.add_route(
+            get_data_entry_programs_route_name(), get_data_entry_programs_route(),
+        )
+        config.add_view(
+            get_data_entry_programs,
+            route_name=get_data_entry_programs_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_tracks
+        config.add_route(
+            get_data_entry_tracks_route_name(), get_data_entry_tracks_route(),
+        )
+        config.add_view(
+            get_data_entry_tracks,
+            route_name=get_data_entry_tracks_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_submission
+        config.add_route(
+            get_data_entry_submission_route_name(), get_data_entry_submission_route(),
+        )
+        config.add_view(
+            get_data_entry_submission,
+            route_name=get_data_entry_submission_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_terms
+        config.add_route(
+            get_data_entry_terms_route_name(), get_data_entry_terms_route(),
+        )
+        config.add_view(
+            get_data_entry_terms,
+            route_name=get_data_entry_terms_route_name(),
             renderer="json",
         )
 

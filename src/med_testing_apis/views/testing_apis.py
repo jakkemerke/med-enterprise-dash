@@ -1,7 +1,5 @@
 from datetime import date
 
-from pyramid.view import view_config
-
 
 def get_today_string():
     return f"{date.today()}"

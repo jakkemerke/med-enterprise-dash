@@ -11,7 +11,12 @@ def get_route_apps():
     return "/apps/"
 
 
-# ======== TESTING ===================================================
+# ======== AUTH ======================================================
+def get_api_test_apps_list_route():
+    return f"{get_route_apps()}api/test/apps_list"
+
+
+# ======== APPOINTMENTS ==============================================
 def get_api_test_current_user_route():
     return f"{get_route_apps()}api/test/current_user"
 
@@ -84,5 +89,36 @@ def get_api_test_resolve_interaction_route():
     return f"{get_route_apps()}api/test/resolve_interaction"
 
 
-def get_api_test_apps_list_route():
-    return f"{get_route_apps()}api/test/apps_list"
+# ======== DATA_ENTRY ================================================
+def get_data_entry_organizations_route():
+    """The view accepts a querystring "s".
+    """
+    return f"{get_route_apps()}data-entry/organizations"
+
+
+def get_data_entry_countries_route():
+    return f"{get_route_apps()}data-entry/countries"
+
+
+def get_data_entry_events_route():
+    return f"{get_route_apps()}data-entry/events"
+
+
+def get_data_entry_traceability_route():
+    return f"{get_route_apps()}data-entry/traceability"
+
+
+def get_data_entry_programs_route():
+    return f"{get_route_apps()}data-entry/programs"
+
+
+def get_data_entry_tracks_route():
+    return f"{get_route_apps()}data-entry/tracks"
+
+
+def get_data_entry_submission_route():
+    return f"{get_route_apps()}data-entry/submission"
+
+
+def get_data_entry_terms_route():
+    return f"{get_route_apps()}data-entry/terms"
