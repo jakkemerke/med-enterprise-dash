@@ -91,8 +91,6 @@ def get_api_test_resolve_interaction_route():
 
 # ======== DATA_ENTRY ================================================
 def get_data_entry_organizations_route():
-    """The view accepts a querystring "s".
-    """
     return f"{get_route_apps()}data-entry/organizations"
 
 
@@ -105,7 +103,7 @@ def get_data_entry_events_route():
 
 
 def get_data_entry_traceability_route():
-    return f"{get_route_apps()}data-entry/traceability"
+    return f"{get_route_apps()}data-entry/traceability-tags"
 
 
 def get_data_entry_programs_route():

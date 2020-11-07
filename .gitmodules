@@ -1,3 +1,6 @@
 [submodule "lib/med-appointments"]
 	path = lib/med-appointments
 	url = https://notabug.org/vaeringjar/med-appointments.git
+[submodule "lib/med-data-entry"]
+	path = lib/med-data-entry
+	url = https://notabug.org/vaeringjar/med-data-entry.git

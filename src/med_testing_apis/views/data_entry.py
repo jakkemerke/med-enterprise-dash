@@ -3,7 +3,7 @@ def get_data_entry_organizations_route_name():
 
 
 def get_data_entry_organizations(request):
-    """The view accepts a querystring "s".
+    """This view accepts a query string "s".
     """
     return {}
 
@@ -21,6 +21,8 @@ def get_data_entry_events_route_name():
 
 
 def get_data_entry_events(request):
+    """This view accepts a query string "id".
+    """
     return {}
 
 
