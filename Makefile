@@ -39,12 +39,7 @@ dev:
 
 .PHONY: fe
 fe:
-	@cd lib/med-appointments/ \
-            && make init \
-            && make rebuild \
-            && rsync -av --delete ./output/ \
-                ../../src/med_enterprise_dash/static/med-appointments/ \
-            && make clean
+	@./bin/rebuild_frontends
 	@echo done
 
 

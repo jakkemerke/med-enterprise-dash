@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+
+rebuild_med_appointments() {
+    cd lib/med-appointments/ \
+	&& make init \
+	&& make rebuild \
+	&& rsync -av --delete ./output/ \
+		 ../../src/med_enterprise_dash/static/med-appointments/ \
+	&& make clean
+}
+rebuild_med_data_entry() {
+    cd lib/med-data-entry/ \
+	&& make init \
+	&& make rebuild \
+	&& rsync -av --delete ./output/ \
+		 ../../src/med_enterprise_dash/static/med-data-entry/ \
+	&& make clean
+}
+rebuild_frontends_main() {
+    local current_dir=$(pwd)
+    rebuild_med_appointments
+    cd ${current_dir}
+    rebuild_med_data_entry
+    cd ${current_dir}
+}
+
+rebuild_frontends_main
