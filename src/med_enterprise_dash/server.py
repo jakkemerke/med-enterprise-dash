@@ -135,7 +135,19 @@ def get_app():
 
         # ======== DATA_ENTRY APP
         config.add_route(get_data_entry_route_name(), get_data_entry_route())
-        config.add_view(get_data_entry_view, route_name=get_data_entry_route_name())
+        config.add_view(
+            get_data_entry_view,
+            route_name=get_data_entry_route_name(),
+            renderer="./templates/apps/data_entry.jinja2",
+        )
+        config.add_static_view(
+            path="med_enterprise_dash:static/med-data-entry/css",
+            name=f"apps/data_entry/static/css",
+        )
+        config.add_static_view(
+            path="med_enterprise_dash:static/med-data-entry/js",
+            name=f"apps/data_entry/static/js",
+        )
 
         # ======== EVENTS APP
         config.add_route(get_events_route_name(), get_events_route())

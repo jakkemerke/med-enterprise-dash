@@ -55,7 +55,12 @@ def get_data_entry_submission_route_name():
 
 
 def get_data_entry_submission(request):
-    return {}
+    return {
+        "status": "success",
+        "reason": "",
+        "errors": {},
+        "testing": True,
+    }
 
 
 def get_data_entry_terms_route_name():
