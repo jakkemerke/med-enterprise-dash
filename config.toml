@@ -6,7 +6,8 @@ host = "localhost"
 port = 6544
 scheme = "http"
 session_factory = "todo_add_a_secret"
-
+single_app_mode = false
+branding = "MED Enterprise Dash"
 
 [developer]
 auto_login = true

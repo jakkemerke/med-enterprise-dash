@@ -55,3 +55,7 @@ def developer_auto_login_enabled(med_config=get_med_config()):
 
 def get_developer_username(med_config=get_med_config()):
     return med_config["developer"]["username"]
+
+
+def get_branding(med_config=get_med_config()):
+    return med_config["branding"]

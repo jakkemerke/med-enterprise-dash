@@ -20,12 +20,13 @@ mfws-cyberpunk
 * {
     margin: 0;
     padding: 0;
-    color: #333;
-    background: #EEE;
 }
 
 html, body {
     height: 100%;
+    font-size: initial;
+    color: #333;
+    background-color: #FFF;
 }
 
 body {
@@ -34,6 +35,15 @@ body {
     line-height: 1.4;
     width: 93.6%;
     max-width: 1024px;
+}
+
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 15px;
+}
+hr, hr.mfws {
+    padding:0;
 }
 
 header.mfws *,
@@ -87,6 +97,10 @@ section.mfws {
     width: 100%;
     min-height: calc(100% - 160px);
 }
+section.mfws {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
 
 
 footer.mfws {
@@ -94,6 +108,7 @@ footer.mfws {
     position: absolute;
     width: 80%;
     padding: 0 10%;
+    box-sizing: initial;
 }
 footer.mfws,
 footer.mfws *,
@@ -136,6 +151,13 @@ a:active {color:#FFF;}
 h1, h2, h3, h4, h5, h6 {
     font-family:monospace;
     font-size:x-large;
+    font-weight:700;
+}
+h1, h2, h3 {
+    margin: 16px 0;
+}
+h4, h5, h6 {
+    margin: 10px 0;
 }
 h1, .title {color:#ff1100;}
 h2 {color:#ff9c00;}
