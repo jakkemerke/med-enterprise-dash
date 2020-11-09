@@ -31,6 +31,16 @@ def get_appointments_alternate_view(request):
             "username": get_username(request),
             "route_prefix": get_clientside_path_offset(),
             "apps": get_apps_list(request.session["permissions_dict"]),
+            "apis": {
+                "appointments": "http://localhost:6543/apps/api/test/appointments",
+                "appt_users": "http://localhost:6543/apps/api/test/appt_users",
+                "current_user": "http://localhost:6543/apps/api/test/current_user",
+                "filters": "http://localhost:6543/apps/api/test/filters",
+                "reassign": "http://localhost:6543/apps/api/test/reassign",
+                "takebegin": "http://localhost:6543/apps/api/test/take_begin",
+                "update_condition": "http://localhost:6543/apps/api/test/update_condition",
+                "users": "http://localhost:6543/apps/api/test/users",
+            },
             "external_links": [
                 # {"url": "#", "name": "Link1"},
                 # {"url": "#", "name": "Link2"},

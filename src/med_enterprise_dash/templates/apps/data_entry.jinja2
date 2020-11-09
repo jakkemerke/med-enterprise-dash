@@ -18,20 +18,22 @@
         <p><strong>Sorry but med-data-entry cannot work properly without JavaScript enabled.</strong></p>
         <p><strong>Please enable it to continue.</strong></p>
     </noscript>
-    <div id="frontEndWiring" style="display: none;">{
+    <div id="frontEndWiring" style="display: none;">
+        {
         "endpoints": {
-        "organizations":"http://localhost:6543/apps/data-entry/organizations?s=",
-        "countries":"http://localhost:6543/apps/data-entry/countries",
-        "events":"http://localhost:6543/apps/data-entry/events?id=",
-        "traceabilityTags":"http://localhost:6543/apps/data-entry/traceability-tags",
-        "programs":"http://localhost:6543/apps/data-entry/programs",
-        "tracks":"http://localhost:6543/apps/data-entry/tracks",
-        "submit":"http://localhost:6543/apps/data-entry/submission",
-        "terms":"http://localhost:6543/apps/data-entry/terms",
+        "countries":"{{ apis.countries }}",
+        "events":"{{ apis.events }}?id=",
+        "organizations":"{{ apis.organizations }}?s=",
+        "programs":"{{ apis.programs }}",
+        "submit":"{{ apis.submission }}",
+        "terms":"{{ apis.terms }}",
+        "traceabilityTags":"{{ apis.traceability_tags }}",
+        "tracks":"{{ apis.tracks }}",
         "zulu":""
         },
         "testResponse":false
-        }</div>
+        }
+    </div>
     <div id="app"></div>
     <script src="/{{route_prefix}}static/med-data-entry/js/chunk-vendors.js"></script>
     <script src="/{{route_prefix}}static/med-data-entry/js/app.js"></script>

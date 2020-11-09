@@ -31,10 +31,16 @@ def get_data_entry_view(request):
             "username": get_username(request),
             "route_prefix": get_clientside_path_offset(),
             "apps": get_apps_list(request.session["permissions_dict"]),
-            "external_links": [
-                # {"url": "#", "name": "Link1"},
-                # {"url": "#", "name": "Link2"},
-            ],
+            "apis": {
+                "countries": "http://localhost:6543/apps/data-entry/countries",
+                "events": "http://localhost:6543/apps/data-entry/events?id=",
+                "organizations": "http://localhost:6543/apps/data-entry/organizations?s=",
+                "programs": "http://localhost:6543/apps/data-entry/programs",
+                "submit": "http://localhost:6543/apps/data-entry/submission",
+                "terms": "http://localhost:6543/apps/data-entry/terms",
+                "traceability_tags": "http://localhost:6543/apps/data-entry/traceability-tags",
+                "tracks": "http://localhost:6543/apps/data-entry/tracks",
+            },
         }
     else:
         raise exc.HTTPFound(request.route_url(get_login_route_name()))

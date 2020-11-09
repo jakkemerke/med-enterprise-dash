@@ -14,21 +14,21 @@
 
 <section class="mfws">
     <noscript>
-	<h1>{{ name }}: {{username}}</h1>
+        <h1>{{ name }}: {{username}}</h1>
         <p><strong>Sorry but med-appointments cannot work properly without JavaScript enabled.</strong></p>
         <p><strong>Please enable it to continue.</strong></p>
     </noscript>
     <div id="frontEndWiring" style="display: none;">
         {
         "api": {
-        "currentUser": "http://localhost:6543/apps/api/test/current_user",
-        "filters": "http://localhost:6543/apps/api/test/filters",
-        "users": "http://localhost:6543/apps/api/test/users",
-        "apptUsers": "http://localhost:6543/apps/api/test/appt_users",
-        "appointments": "http://localhost:6543/apps/api/test/appointments",
-        "reassign": "http://localhost:6543/apps/api/test/reassign",
-        "takebegin": "http://localhost:6543/apps/api/test/take_begin",
-        "updateCondition": "http://localhost:6543/apps/api/test/update_condition"
+        "currentUser": "{{ apis.current_user }}",
+        "filters": "{{ apis.filters }}",
+        "users": "{{ apis.users }}",
+        "apptUsers": "{{ apis.appt_users }}",
+        "appointments": "{{ apis.appointments }}",
+        "reassign": "{{ apis.reassign }}",
+        "takebegin": "{{ apis.take_begin }}",
+        "updateCondition": "{{ apis.update_condition }}"
         },
         "testResponse":true
         }
