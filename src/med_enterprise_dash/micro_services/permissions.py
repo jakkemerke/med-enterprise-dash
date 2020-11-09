@@ -7,11 +7,9 @@ from requests import post
 from med_enterprise_dash.config import get_med_config
 from med_enterprise_dash.routes import (
     get_appointments_alternate_route,
-    get_appointments_alternate_route_name,
     get_appointments_route,
     get_appointments_route_name,
     get_data_entry_route,
-    get_data_entry_route_name,
     get_events_route,
     get_events_route_name,
     get_file_archive_route,
@@ -23,6 +21,10 @@ from med_enterprise_dash.routes import (
     get_status_route,
     get_status_route_name,
 )
+from med_enterprise_dash.views.appointments_alternate.route_names import (
+    get_appointments_alternate_route_name,
+)
+from med_enterprise_dash.views.data_entry.route_names import get_data_entry_route_name
 
 
 def get_permissions_url(med_config=get_med_config()):

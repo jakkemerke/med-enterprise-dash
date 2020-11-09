@@ -16,11 +16,15 @@ from med_enterprise_dash.config import (
 from med_enterprise_dash.routes import *
 from med_enterprise_dash.utils.toml import get_med_config
 from med_enterprise_dash.views.appointments import get_appointments_view
-from med_enterprise_dash.views.appointments_alternate import (
+from med_enterprise_dash.views.appointments_alternate.app import (
     get_appointments_alternate_view,
 )
+from med_enterprise_dash.views.appointments_alternate.api import *
+from med_enterprise_dash.views.appointments_alternate.route_names import *
 from med_enterprise_dash.views.apps import apps
-from med_enterprise_dash.views.data_entry import get_data_entry_view
+from med_enterprise_dash.views.data_entry.api import *
+from med_enterprise_dash.views.data_entry.app import get_data_entry_view
+from med_enterprise_dash.views.data_entry.route_names import *
 from med_enterprise_dash.views.events import get_events_view
 from med_enterprise_dash.views.file_archive import get_file_archive_view
 from med_enterprise_dash.views.home import get_home_view
@@ -115,7 +119,7 @@ def get_app():
         config.add_route(get_appointments_route_name(), get_appointments_route())
         config.add_view(get_appointments_view, route_name=get_appointments_route_name())
 
-        # ======== APPOINTMENTS_ALTERNATE APP
+        # ======== APPOINTMENTS_ALTERNATE APP ========
         config.add_route(
             get_appointments_alternate_route_name(), get_appointments_alternate_route()
         )
@@ -133,7 +137,177 @@ def get_app():
             name=f"apps/appointments_alternate/static/js",
         )
 
-        # ======== DATA_ENTRY APP
+        # ======== APPOINTMENTS_ALTERNATE APIs
+
+        # ======== APPOINTMENTS, GENERAL, ETC
+        config.add_route(
+            get_api_test_current_user_route_name(), get_api_test_current_user_route()
+        )
+        config.add_view(
+            get_api_test_current_user_view,
+            route_name=get_api_test_current_user_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_filters_route_name(), get_api_test_filters_route()
+        )
+        config.add_view(
+            get_api_test_filters_view,
+            route_name=get_api_test_filters_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(get_api_test_users_route_name(), get_api_test_users_route())
+        config.add_view(
+            get_api_test_users_view,
+            route_name=get_api_test_users_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_appt_users_route_name(), get_api_test_appt_users_route()
+        )
+        config.add_view(
+            get_api_test_appt_users_view,
+            route_name=get_api_test_appt_users_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_appointments_route_name(), get_api_test_appointments_route()
+        )
+        config.add_view(
+            get_api_test_appointments_view,
+            route_name=get_api_test_appointments_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_reassign_route_name(), get_api_test_reassign_route()
+        )
+        config.add_view(
+            get_api_test_reassign_view,
+            route_name=get_api_test_reassign_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_take_begin_route_name(), get_api_test_take_begin_route()
+        )
+        config.add_view(
+            get_api_test_take_begin_view,
+            route_name=get_api_test_take_begin_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_update_condition_route_name(),
+            get_api_test_update_condition_route(),
+        )
+        config.add_view(
+            get_api_test_update_condition_view,
+            route_name=get_api_test_update_condition_route_name(),
+            renderer="json",
+        )
+
+        # ======== SEARCH
+        config.add_route(
+            get_api_test_search_route_name(), get_api_test_search_route(),
+        )
+        config.add_view(
+            get_api_test_search_view,
+            route_name=get_api_test_search_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_add_dropin_route_name(), get_api_test_add_dropin_route(),
+        )
+        config.add_view(
+            get_api_test_add_dropin_view,
+            route_name=get_api_test_add_dropin_route_name(),
+            renderer="json",
+        )
+
+        # ======== RECORD aka CONTACT
+        config.add_route(
+            get_api_test_record_route_name(), get_api_test_record_route(),
+        )
+        config.add_view(
+            get_api_test_record_view,
+            route_name=get_api_test_record_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_add_interaction_route_name(),
+            get_api_test_add_interaction_route(),
+        )
+        config.add_view(
+            get_api_test_add_interaction_view,
+            route_name=get_api_test_add_interaction_route_name(),
+            renderer="json",
+        )
+
+        # ======== APPOINTMENT aka INTERACTION aka CASE
+        config.add_route(
+            get_api_test_appointment_route_name(), get_api_test_appointment_route(),
+        )
+        config.add_view(
+            get_api_test_appointment_view,
+            route_name=get_api_test_appointment_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_add_message_route_name(), get_api_test_add_message_route(),
+        )
+        config.add_view(
+            get_api_test_add_message_view,
+            route_name=get_api_test_add_message_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_clear_hold_route_name(), get_api_test_clear_hold_route(),
+        )
+        config.add_view(
+            get_api_test_clear_hold_view,
+            route_name=get_api_test_clear_hold_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_finish_route_name(), get_api_test_finish_route(),
+        )
+        config.add_view(
+            get_api_test_finish_view,
+            route_name=get_api_test_finish_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_reassign_interaction_route_name(),
+            get_api_test_reassign_interaction_route(),
+        )
+        config.add_view(
+            get_api_test_reassign_interaction_view,
+            route_name=get_api_test_reassign_interaction_route_name(),
+            renderer="json",
+        )
+
+        config.add_route(
+            get_api_test_resolve_interaction_route_name(),
+            get_api_test_resolve_interaction_route(),
+        )
+        config.add_view(
+            get_api_test_resolve_interaction_view,
+            route_name=get_api_test_resolve_interaction_route_name(),
+            renderer="json",
+        )
+
+        # ======== DATA_ENTRY APP ========
         config.add_route(get_data_entry_route_name(), get_data_entry_route())
         config.add_view(
             get_data_entry_view,
@@ -147,6 +321,89 @@ def get_app():
         config.add_static_view(
             path="med_enterprise_dash:static/med-data-entry/js",
             name=f"apps/data_entry/static/js",
+        )
+
+        # ======== DATA_ENTRY APIs
+        # get_data_entry_organizations
+        config.add_route(
+            get_data_entry_organizations_route_name(),
+            get_data_entry_organizations_route(),
+        )
+        config.add_view(
+            get_data_entry_organizations,
+            route_name=get_data_entry_organizations_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_countries
+        config.add_route(
+            get_data_entry_countries_route_name(), get_data_entry_countries_route(),
+        )
+        config.add_view(
+            get_data_entry_countries,
+            route_name=get_data_entry_countries_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_events
+        config.add_route(
+            get_data_entry_events_route_name(), get_data_entry_events_route(),
+        )
+        config.add_view(
+            get_data_entry_events,
+            route_name=get_data_entry_events_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_traceability
+        config.add_route(
+            get_data_entry_traceability_route_name(),
+            get_data_entry_traceability_route(),
+        )
+        config.add_view(
+            get_data_entry_traceability,
+            route_name=get_data_entry_traceability_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_programs
+        config.add_route(
+            get_data_entry_programs_route_name(), get_data_entry_programs_route(),
+        )
+        config.add_view(
+            get_data_entry_programs,
+            route_name=get_data_entry_programs_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_tracks
+        config.add_route(
+            get_data_entry_tracks_route_name(), get_data_entry_tracks_route(),
+        )
+        config.add_view(
+            get_data_entry_tracks,
+            route_name=get_data_entry_tracks_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_submission
+        config.add_route(
+            get_data_entry_submission_route_name(), get_data_entry_submission_route(),
+        )
+        config.add_view(
+            get_data_entry_submission,
+            route_name=get_data_entry_submission_route_name(),
+            renderer="json",
+        )
+
+        # get_data_entry_terms
+        config.add_route(
+            get_data_entry_terms_route_name(), get_data_entry_terms_route(),
+        )
+        config.add_view(
+            get_data_entry_terms,
+            route_name=get_data_entry_terms_route_name(),
+            renderer="json",
         )
 
         # ======== EVENTS APP

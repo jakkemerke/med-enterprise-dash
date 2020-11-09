@@ -8,11 +8,21 @@ from med_enterprise_dash.config import (
 )
 from med_enterprise_dash.micro_services.permissions import get_apps_list
 from med_enterprise_dash.routes import (
-    get_data_entry_route_name,
     get_login_route_name,
     get_login_verification_route_name,
 )
 from med_enterprise_dash.utils.session import get_username
+from med_enterprise_dash.views.data_entry.route_names import (
+    get_data_entry_countries_route_name,
+    get_data_entry_events_route_name,
+    get_data_entry_organizations_route_name,
+    get_data_entry_programs_route_name,
+    get_data_entry_route_name,
+    get_data_entry_submission_route_name,
+    get_data_entry_terms_route_name,
+    get_data_entry_traceability_route_name,
+    get_data_entry_tracks_route_name,
+)
 
 
 def get_clientside_path_offset():
@@ -32,14 +42,16 @@ def get_data_entry_view(request):
             "route_prefix": get_clientside_path_offset(),
             "apps": get_apps_list(request.session["permissions_dict"]),
             "apis": {
-                "countries": "http://localhost:6543/apps/data-entry/countries",
-                "events": "http://localhost:6543/apps/data-entry/events?id=",
-                "organizations": "http://localhost:6543/apps/data-entry/organizations?s=",
-                "programs": "http://localhost:6543/apps/data-entry/programs",
-                "submit": "http://localhost:6543/apps/data-entry/submission",
-                "terms": "http://localhost:6543/apps/data-entry/terms",
-                "traceability_tags": "http://localhost:6543/apps/data-entry/traceability-tags",
-                "tracks": "http://localhost:6543/apps/data-entry/tracks",
+                "countries": request.route_url(get_data_entry_countries_route_name()),
+                "events": f"{request.route_url(get_data_entry_events_route_name())}?id=",
+                "organizations": f"{request.route_url(get_data_entry_organizations_route_name())}?s=",
+                "programs": request.route_url(get_data_entry_programs_route_name()),
+                "submit": request.route_url(get_data_entry_submission_route_name()),
+                "terms": request.route_url(get_data_entry_terms_route_name()),
+                "traceability_tags": request.route_url(
+                    get_data_entry_traceability_route_name()
+                ),
+                "tracks": request.route_url(get_data_entry_tracks_route_name()),
             },
         }
     else:

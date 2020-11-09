@@ -13,7 +13,13 @@ def get_data_entry_countries_route_name():
 
 
 def get_data_entry_countries(request):
-    return {}
+    return [
+        {"id": 1, "code": "1", "name": "Cascadia"},
+        {"id": 2, "code": "2", "name": "Alaska"},
+        {"id": 3, "code": "3", "name": "Siberia"},
+        {"id": 4, "code": "4", "name": "Greenland"},
+        {"id": 5, "code": "5", "name": "Svalbard"},
+    ]
 
 
 def get_data_entry_events_route_name():
