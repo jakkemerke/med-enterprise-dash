@@ -9,7 +9,6 @@ from pyramid.events import NewRequest
 from med_enterprise_dash.config import (
     get_port,
     get_hostname,
-    get_route_prefix,
     get_installation_subdirectory,
     get_static_path_offset,
 )

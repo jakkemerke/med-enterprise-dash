@@ -1,10 +1,23 @@
+from med_enterprise_dash.utils.toml import get_med_config
+from med_enterprise_dash.config import (
+    get_route_prefix,
+    get_installation_subdirectory,
+)
+
+
+def get_route_subdir():
+    med_config = get_med_config()
+    subdirectory = get_installation_subdirectory(med_config)
+    return get_route_prefix(subdirectory)
+
+
 # ======== MED =======================================================
 def get_home_route_name():
     return "Home"
 
 
 def get_route_root():
-    return "/"
+    return f"{get_route_subdir()}/"
 
 
 def get_login_route_name():
@@ -12,7 +25,7 @@ def get_login_route_name():
 
 
 def get_route_login():
-    return "/login/"
+    return f"{get_route_root()}login/"
 
 
 def get_login_verification_route_name():
@@ -20,7 +33,7 @@ def get_login_verification_route_name():
 
 
 def get_route_login_verification():
-    return "/login/verification"
+    return f"{get_route_root()}login/verification"
 
 
 def get_logout_route_name():
@@ -28,7 +41,7 @@ def get_logout_route_name():
 
 
 def get_route_logout():
-    return "/logout/"
+    return f"{get_route_root()}logout/"
 
 
 def get_logout_callback_route_name():
@@ -36,7 +49,7 @@ def get_logout_callback_route_name():
 
 
 def get_route_logout_callback():
-    return "/logout_callback/"
+    return f"{get_route_root()}logout_callback/"
 
 
 def get_profile_route_name():
@@ -44,7 +57,7 @@ def get_profile_route_name():
 
 
 def get_route_profile():
-    return "/profile/"
+    return f"{get_route_root()}profile/"
 
 
 def get_apps_route_name():
@@ -52,7 +65,7 @@ def get_apps_route_name():
 
 
 def get_route_apps():
-    return "/apps/"
+    return f"{get_route_root()}apps/"
 
 
 # ======== APPS ======================================================
