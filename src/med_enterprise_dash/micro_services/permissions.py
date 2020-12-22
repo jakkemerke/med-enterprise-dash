@@ -58,42 +58,19 @@ def get_permissions_legacy_mode(username):
 
 
 def get_permissions_standard_mode(username):
-    data = {"username": username}
-    response = post(get_permissions_url(), data)
-    # print(response.status_code)
-    # print(response.text)
-    return json.loads(response.text)
-
-
-# TODO: Remove this.
-def get_api_test_apps_list_payload():
-    return {
-        "status": "success",
-        "reason": "",
-        "errors": {},
-        "testing": True,
-        "username": "admin",
-        "apps_list": {
-            "appointments": True,
-            "appointments_lite": True,
-            "data_entry": True,
-            "events": True,
-            "file_archive": True,
-            "residents": True,
-            "search_patients": True,
-            "sysadmin": True,
-            "system_status": True,
+    response = post(
+        get_permissions_url(),
+        data={"username": username},
+        headers={
+            "token": get_permissions_token(),
+            "Content-Type": "application/json; charset=utf-8",
         },
-    }
-
-
-def get_permissions_testing_mode(username):
-    return get_api_test_apps_list_payload()
+    )
+    return json.loads(response.text)
 
 
 def get_modes():
     return {
-        "testing": get_permissions_testing_mode,
         "legacy": get_permissions_legacy_mode,
         "standard": get_permissions_standard_mode,
     }

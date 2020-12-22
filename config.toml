@@ -24,6 +24,6 @@ server_url = "https://django-cas-ng-demo-server.herokuapp.com/cas/"
 
 
 [micro_services.permissions]
-url = "https://your.endpoint.here/"
+url = "http://localhost:6543/apps/api/test/apps_list"
 token = "todo_add_a_secret"
-mode = "testing" # testing, legacy, else standard
+mode = "standard" # legacy|standard

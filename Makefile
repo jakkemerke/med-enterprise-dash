@@ -21,10 +21,6 @@ init:
 	@git submodule status
 
 
-.PHONY: all
-all: dev run
-
-
 .PHONY: clean
 clean:
 	@py3clean .
@@ -32,7 +28,11 @@ clean:
 
 
 .PHONY: dev
-dev:
+dev: fixed test safer todo
+
+
+.PHONY: fixed
+fixed:
 	@black myapp.py ./src ./bin ./tests
 	@echo ""
 
@@ -61,3 +61,14 @@ safer:
 test:
 	@python3 -m unittest discover
 	@echo ""
+
+
+.PHONY: todo
+todo:
+	@echo "TODO:"
+	@grep -Iirl 'todo' -A 1 ./ --color=always \
+            --exclude=Makefile \
+            --exclude-dir=.git \
+            --exclude-dir=var \
+            --exclude-dir=lib \
+            --exclude-dir=bootstrap
