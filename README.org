@@ -1,15 +1,22 @@
 * About
 
-A prototype web application for managing patient data.
+A web application for managing enterprise data, branded for medical
+patients.
+
+Please consider MED Enterprise Dash in alpha state for now.
+
 
 * CAS Server
 
-Using the example server here:
+In the future, MED will include a docker container to deploy a local
+instance for development. Currently, the repository uses the example
+server here:
 
 https://djangocas.dev/blog/python-cas-flask-example/
 
 username: admin
 password: django-cas-ng
+
 
 * License
 
@@ -17,9 +24,11 @@ Copyright 2020 vaeringjar.
 
 Distributed under the AGPLv3+.
 
+
 * Acknowledgments
 
 - favicons :: https://favicon.io/emoji-favicons/medical-symbol/
+
 
 * Developer users
 
