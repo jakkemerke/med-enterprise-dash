@@ -6,7 +6,7 @@ from med_enterprise_dash.config import (
     get_med_config,
     get_static_path_offset,
 )
-from med_enterprise_dash.micro_services.permissions import get_apps_list
+from med_enterprise_dash.micro_services.permissions import get_apps_routes
 from med_enterprise_dash.routes import (
     get_login_route_name,
     get_login_verification_route_name,
@@ -52,7 +52,7 @@ def get_appointments_alternate_view(request):
             "name": get_appointments_alternate_route_name(),
             "username": get_username(request),
             "route_prefix": get_clientside_path_offset(),
-            "apps": get_apps_list(request.session["permissions_dict"]),
+            "apps": get_apps_routes(request.session["permissions_dict"]),
             "apis": {
                 "appointments": request.route_url(
                     get_api_test_appointments_route_name()

@@ -53,20 +53,28 @@ def get_permissions_legacy_mode(username):
     req.add_header("token", get_permissions_token())
     req.add_header("Content-Length", len(jsondataasbytes))
 
-    response = urllib.request.urlopen(req, jsondataasbytes, context=myssl)
-    return json.loads(response.read().decode("utf-8"))
+    try:
+        response = urllib.request.urlopen(req, jsondataasbytes, context=myssl)
+        return json.loads(response.read().decode("utf-8"))
+    except:
+        # TODO: log this
+        return None
 
 
 def get_permissions_standard_mode(username):
-    response = post(
-        get_permissions_url(),
-        data={"username": username},
-        headers={
-            "token": get_permissions_token(),
-            "Content-Type": "application/json; charset=utf-8",
-        },
-    )
-    return json.loads(response.text)
+    try:
+        response = post(
+            get_permissions_url(),
+            data={"username": username},
+            headers={
+                "token": get_permissions_token(),
+                "Content-Type": "application/json; charset=utf-8",
+            },
+        )
+        return json.loads(response.text)
+    except:
+        # TODO: log this
+        return None
 
 
 def get_modes():
@@ -104,19 +112,30 @@ def get_permissions_mapping():
     }
 
 
+def get_apps_list_dict(permissions_dict):
+    if isinstance(permissions_dict, dict):
+        return permissions_dict.get("apps_list", None)
+    else:
+        return None
+
+
 def get_sysadmin(permissions_dict):
-    apps_list = permissions_dict.get("apps_list", None)
-    return apps_list["sysadmin"]
+    apps_list = get_apps_list_dict(permissions_dict)
+    if isinstance(apps_list, dict):
+        return apps_list.get("sysadmin", False)
+    else:
+        return False
 
 
-def get_apps_list(permissions_dict):
-    apps_list = permissions_dict.get("apps_list", None)
+def get_apps_routes(permissions_dict):
+    apps_list = get_apps_list_dict(permissions_dict)
     is_sysadmin = get_sysadmin(permissions_dict)
     apps_routes = []
 
-    for key in get_permissions_mapping():
-        if is_sysadmin or apps_list.get(key, False):
-            apps_routes.append(get_permissions_mapping().get(key, None))
+    if apps_list is not None:
+        for key in get_permissions_mapping():
+            if is_sysadmin or apps_list.get(key, False):
+                apps_routes.append(get_permissions_mapping().get(key, None))
 
     return apps_routes
 

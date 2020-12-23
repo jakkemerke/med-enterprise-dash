@@ -16,8 +16,12 @@ def get_status_token(med_config=get_med_config()):
 
 
 def get_status_pub_health_standard_mode():
-    response = post(get_status_url())
-    return json.loads(response.text)
+    try:
+        response = post(get_status_url())
+        return json.loads(response.text)
+    except:
+        # TODO: log this
+        return None
 
 
 def get_status_pub_health():

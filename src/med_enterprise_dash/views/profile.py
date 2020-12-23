@@ -2,7 +2,7 @@ import pyramid.httpexceptions as exc
 
 from med_enterprise_dash.config import get_clientside_path_offset, get_branding
 from med_enterprise_dash.micro_services.permissions import (
-    get_apps_list,
+    get_apps_routes,
     get_permissions,
 )
 from med_enterprise_dash.routes import get_login_route_name, get_profile_route_name
@@ -26,7 +26,7 @@ def get_profile_response(request):
         "name": get_profile_route_name(),
         "username": get_username(request),
         "route_prefix": get_clientside_path_offset(),
-        "apps": get_apps_list(permissions_dict),
+        "apps": get_apps_routes(permissions_dict),
         "external_links": [
             # {"url": "#", "name": "Link1"},
             # {"url": "#", "name": "Link2"},

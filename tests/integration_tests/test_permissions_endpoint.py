@@ -6,7 +6,7 @@ sys.path.insert(
 )
 
 from med_enterprise_dash.micro_services.permissions import (
-    get_apps_list,
+    get_apps_routes,
     get_permissions,
 )
 
@@ -16,7 +16,7 @@ class TestPermissionsEndpoint(unittest.TestCase):
         permissions_dict = get_permissions("admin")
 
         print(f"Integration test: {__name__}")
-        print(get_apps_list(permissions_dict))
+        print(get_apps_routes(permissions_dict))
         print("")
 
 
