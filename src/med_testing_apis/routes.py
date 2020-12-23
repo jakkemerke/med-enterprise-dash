@@ -120,3 +120,10 @@ def get_data_entry_submission_route():
 
 def get_data_entry_terms_route():
     return f"{get_route_apps()}data-entry/terms"
+
+
+# ======== STATUS ====================================================
+
+
+def get_status_pub_health_route():
+    return f"{get_route_apps()}status/pub_health"

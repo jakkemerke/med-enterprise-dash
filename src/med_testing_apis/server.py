@@ -7,6 +7,7 @@ from pyramid.events import NewRequest
 from med_testing_apis.routes import *
 from med_testing_apis.views.testing_apis import *
 from med_testing_apis.views.data_entry import *
+from med_testing_apis.views.status import *
 
 
 def add_cors_headers_response_callback(event):
@@ -43,6 +44,17 @@ def get_app():
         # ======== STATIC HOME ROOT
         config.add_route(get_route_home_name(), get_route_home())
         config.add_view(get_home_view, route_name=get_route_home_name())
+
+        # ======== STATUS ============================================
+        # ======== PUB HEALTH
+        config.add_route(
+            get_status_pub_health_route_name(), get_status_pub_health_route(),
+        )
+        config.add_view(
+            get_status_pub_health,
+            route_name=get_status_pub_health_route_name(),
+            renderer="json",
+        )
 
         # ======== AUTH ==============================================
         # ======== APPS LIST
