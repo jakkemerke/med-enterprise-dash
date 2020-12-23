@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "med-enterprise-dash"
-version = "0.1.0"
+version = "0.1.1"
 description = "A tool for managing patient data."
 authors = ["vaeringjar <vaeringjar@peers.community>"]
 license = "AGPL-3.0-or-later"

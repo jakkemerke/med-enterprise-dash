@@ -16,7 +16,7 @@ from med_enterprise_dash.utils.toml import get_med_config
 
 class TestVersion(unittest.TestCase):
     def test_version(self):
-        assert __version__ == "0.1.0"
+        assert __version__ is not None
 
 
 class TestConfig(unittest.TestCase):

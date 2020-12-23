@@ -5,17 +5,15 @@ patients.
 
 Please consider MED Enterprise Dash in alpha state for now.
 
+/Developers, please see the Makefile for more details./
 
-* CAS Server
 
-In the future, MED will include a docker container to deploy a local
-instance for development. Currently, the repository uses the example
-server here:
+* Contributing
 
-https://djangocas.dev/blog/python-cas-flask-example/
+For questions or comments, please open an issue at the upstream
+repository hosted on notabug:
 
-username: admin
-password: django-cas-ng
+https://notabug.org/vaeringjar/med-enterprise-dash
 
 
 * License
@@ -30,6 +28,16 @@ Distributed under the AGPLv3+.
 - favicons :: https://favicon.io/emoji-favicons/medical-symbol/
 
 
-* Developer users
+* Roadmap
 
-/See the Makefile./
+
+** Replace the demo CAS Server
+
+In the future, MED will include a docker container to deploy a local
+instance for development. Currently, the repository uses the example
+server, kindly provided here:
+
+https://djangocas.dev/blog/python-cas-flask-example/
+
+username: admin
+password: django-cas-ng

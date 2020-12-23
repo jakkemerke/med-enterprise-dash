@@ -8,6 +8,7 @@ scheme = "http"
 session_factory = "todo_add_a_secret"
 single_app_mode = false
 branding = "MED Enterprise Dash"
+stewards = "The Peers Community"
 
 
 # TODO: Just change auto_login to a calculated bool when username has
@@ -27,3 +28,9 @@ server_url = "https://django-cas-ng-demo-server.herokuapp.com/cas/"
 url = "http://localhost:6543/apps/api/test/apps_list"
 token = "todo_add_a_secret"
 mode = "standard" # legacy|standard
+
+
+[micro_services.status]
+url = "http://localhost:6543/apps/status/pub_health"
+token = "todo_add_a_secret"
+mode = "standard"

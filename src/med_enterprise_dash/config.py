@@ -59,3 +59,7 @@ def get_developer_username(med_config=get_med_config()):
 
 def get_branding(med_config=get_med_config()):
     return med_config["branding"]
+
+
+def get_stewards(med_config=get_med_config()):
+    return med_config["stewards"]
