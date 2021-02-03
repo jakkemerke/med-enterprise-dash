@@ -1,42 +1,65 @@
 <footer class="mfws">
     <a id="sitemap"></a>
+
+
     <nav class="sitemap">
 
-	{% block apps %}
-	{% if apps  %}
-	<div class="widget">
+        {% block apps %}
+        {% if apps  %}
+        <div class="widget">
             <h1>Apps</h1>
             <ul>
-		{% for app in apps %}
+                {% for app in apps %}
                 <li><a href="{{ app.route }}">{{ app.name }}</a></li>
-		{% endfor %}
+                {% endfor %}
             </ul>
-	</div>
-	{% endif %}
-	{% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
 
-	{% block external_links %}
-	{% if external_links %}
-	<div class="widget">
+        {% block external_links %}
+        {% if external_links %}
+        <div class="widget">
             <h1>External Links</h1>
             <ul>
-		{% for link in external_links %}
+                {% for link in external_links %}
                 <li><a href="{{ link.url }}">{{ link.name }}</a></li>
-		{% endfor %}
+                {% endfor %}
             </ul>
-	</div>
-	{% endif %}
-	{% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
 
         <div class="widget">
-	    <h1>Auth</h1>
+            <h1>Auth</h1>
             <ul>
-		{% if username %}
-		<li><a href="/{{route_prefix}}logout">Logout</a></li>
-		{% else %}
-		<li><a href="/{{route_prefix}}login">Login</a></li>
-		{% endif %}
+                {% if username %}
+                <li><a href="/{{route_prefix}}logout">Logout</a></li>
+                {% else %}
+                <li><a href="/{{route_prefix}}login">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
+
+
+    <p>
+        {{ footer.get("branding") }} is a web application for managing enterprise
+        data, hosted by {{ footer.get("stewards") }}. It runs on
+
+        <a href="https://notabug.org/vaeringjar/med-enterprise-dash" target="_blank" rel="noopener noreferrer">
+            MED Enterprise Dash</a>,
+
+        version {{ footer.get("version") }}, available under the
+
+        <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">
+            GNU Affero General Public License</a>
+
+        or any later version. MED Enterprise Dash proudly uses
+
+        <a href="https://trypyramid.com/" target="_blank" rel="noopener noreferrer">Pyramid</a>,
+        a <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">Python</a>
+        framework.
+
+    </p>
 </footer>

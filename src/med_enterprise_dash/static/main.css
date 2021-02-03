@@ -115,12 +115,17 @@ footer.mfws *,
 footer.mfws:before {
     background-color: #000;
 }
+footer.mfws,
+footer.mfws:before {
+    color: #FFF;
+}
 footer.mfws nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-footer.mfws nav div.widget {
+footer.mfws nav div.widget,
+footer.mfws p {
     flex-grow: 1;
     margin: 20px 0;
 }

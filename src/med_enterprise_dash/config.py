@@ -1,5 +1,9 @@
 from med_enterprise_dash.utils.toml import get_med_config
 
+# TODO: Either get this from the pyproject, or add it to the config.
+def get_version():
+    return "0.1.1"
+
 
 def get_port(med_config=get_med_config()):
     return med_config["port"]

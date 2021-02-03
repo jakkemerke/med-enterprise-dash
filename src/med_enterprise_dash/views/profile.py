@@ -6,7 +6,15 @@ from med_enterprise_dash.micro_services.permissions import (
     get_permissions,
 )
 from med_enterprise_dash.routes import get_login_route_name, get_profile_route_name
+from med_enterprise_dash.utils.footer import get_footer
 from med_enterprise_dash.utils.session import get_username
+
+
+def get_external_links():
+    return [
+        # {"url": "#", "name": "Link1"},
+        # {"url": "#", "name": "Link2"},
+    ]
 
 
 def get_url_to_login(request):
@@ -22,15 +30,13 @@ def init_permissions(request):
 def get_profile_response(request):
     permissions_dict = init_permissions(request)
     return {
-        "branding": get_branding(),
-        "name": get_profile_route_name(),
-        "username": get_username(request),
-        "route_prefix": get_clientside_path_offset(),
         "apps": get_apps_routes(permissions_dict),
-        "external_links": [
-            # {"url": "#", "name": "Link1"},
-            # {"url": "#", "name": "Link2"},
-        ],
+        "branding": get_branding(),
+        "external_links": get_external_links(),
+        "footer": get_footer(),
+        "name": get_profile_route_name(),
+        "route_prefix": get_clientside_path_offset(),
+        "username": get_username(request),
     }
 
 

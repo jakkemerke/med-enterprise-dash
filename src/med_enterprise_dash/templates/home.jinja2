@@ -13,6 +13,8 @@
     <h1>{{ branding }}</h1>
     <p><a href="{{login}}">Click here</a> to login.</p>
     <p>Version: {{ version }}</p>
+
+
     {% if status %}
     <h2>System status checks</h2>
     <pre class="src">
@@ -22,28 +24,6 @@
     </pre>
     {% endif %}
 
-
-    <h2>About</h2>
-
-    <p>
-        {{ branding }} is a web application for managing enterprise
-        data, hosted by {{ stewards }}. It runs on
-
-        <a href="https://notabug.org/vaeringjar/med-enterprise-dash" target="_blank" rel="noopener noreferrer">
-            MED Enterprise Dash</a>,
-
-        version {{ version }}, available under the
-
-        <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">
-            GNU Affero General Public License</a>
-
-        or any later version. MED Enterprise Dash proudly uses
-
-        <a href="https://trypyramid.com/" target="_blank" rel="noopener noreferrer">Pyramid</a>,
-        a <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">Python</a>
-        framework.
-
-    </p>
 
 </section>
 
