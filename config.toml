@@ -33,4 +33,4 @@ mode = "standard" # legacy|standard
 [micro_services.status]
 url = "http://localhost:6543/apps/status/pub_health"
 token = "todo_add_a_secret"
-mode = "standard"
+url_integrity = "http://localhost:6543/apps/status/pub_integrity"

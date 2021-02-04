@@ -55,6 +55,15 @@ def get_app():
             route_name=get_status_pub_health_route_name(),
             renderer="json",
         )
+        # ======== PUB INTEGRITY
+        config.add_route(
+            get_status_pub_integrity_route_name(), get_status_pub_integrity_route(),
+        )
+        config.add_view(
+            get_status_pub_integrity,
+            route_name=get_status_pub_integrity_route_name(),
+            renderer="json",
+        )
 
         # ======== AUTH ==============================================
         # ======== APPS LIST

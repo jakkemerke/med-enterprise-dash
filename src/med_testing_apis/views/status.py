@@ -12,3 +12,11 @@ def get_status_pub_health(request):
         {"system": "sprockets", "status": "good"},
         {"system": "widgets", "status": "good"},
     ]
+
+
+def get_status_pub_integrity_route_name():
+    return "status_pub_integrity"
+
+
+def get_status_pub_integrity(request):
+    return "0"

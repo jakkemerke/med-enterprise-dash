@@ -127,3 +127,7 @@ def get_data_entry_terms_route():
 
 def get_status_pub_health_route():
     return f"{get_route_apps()}status/pub_health"
+
+
+def get_status_pub_integrity_route():
+    return f"{get_route_apps()}status/pub_integrity"

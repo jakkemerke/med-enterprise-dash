@@ -25,6 +25,14 @@
     {% endif %}
 
 
+    {% if status_integrity %}
+    <h2>System status integrity</h2>
+    <pre class="src">
+        {{ status_integrity }}
+    </pre>
+    {% endif %}
+
+
 </section>
 
 {% include "footer.jinja2" %}
